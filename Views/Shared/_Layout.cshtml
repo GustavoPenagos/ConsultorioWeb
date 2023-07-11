@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar bg-light fixed-top">
+        <div class="container-fluid">
+            
+                <a href="@Url.Action("Index","Home")" class="text-decoration-none">
+                    <img src="" />
+                    <p class="text-black">
+                        Consultorio odontologico<br />Muelitas contentas
+                    </p>
+                </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <form class="d-flex mt-3" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <br />
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Home")" class="text-decoration-none">
+                                <p class="text-black">
+                                    <img src="~/Content/Images/Home.svg" />
+                                    Inicio
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("AgregarCliente","Registro")" class="text-decoration-none">
+                                <p class="text-black">
+                                    <img src="~/Content/Images/addUser.svg" />
+                                    Agregar cliente
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("AgregarContabilidad","Registro")" class="text-decoration-none">
+                                <p class="text-black">
+                                    <img src="~/Content/Images/addMoney.svg" />
+                                    Agregar contabilidad
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="@Url.Action("AgregarFotos","Registro")" class="text-decoration-none">
+                                <p class="text-black">
+                                    <img src="~/Content/Images/addPhoto.svg" />
+                                    Agregar fotos
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Citas","Lista")" class="text-decoration-none">
+                                <p class="text-black">
+                                    <img src="~/Content/Images/addDate.svg" />
+                                    Ver citas
+                                </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Fotos","Lista")" class="text-decoration-none">
+                                <p class="text-black">
+                                    <img src="~/Content/Images/listPhoto.svg" />
+                                    Ver fotos
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <br /><br /><br /><br /><br />
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer class="text-center text-white fixed-bottom" style="background-color: #ABD3FC;">
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                &copy; @DateTime.Now.Year - Consultorio Odontologico Muelitas Contentas
+            </div>
+            <!-- Copyright -->
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
