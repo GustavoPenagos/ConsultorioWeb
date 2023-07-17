@@ -131,8 +131,10 @@
     <Compile Include="Models\Convecciones.cs" />
     <Compile Include="Models\Departamento.cs" />
     <Compile Include="Models\EstadoCivil.cs" />
+    <Compile Include="Models\EstadoTratamiento.cs" />
     <Compile Include="Models\Estomatologico.cs" />
     <Compile Include="Models\Genero.cs" />
+    <Compile Include="Models\PlanTratamiento.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -188,6 +190,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Registro\RegistroUsuario.cshtml" />
     <Content Include="Views\Registro\RegistroCartaDental.cshtml" />
+    <Content Include="Views\Registro\PlanTratamiento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

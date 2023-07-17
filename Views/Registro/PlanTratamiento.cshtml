@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "PlanTratamiento";
+}
+
+<h2>Plan Del Tratamiento</h2>
+
+<br />
+<form action="@Url.Action("PlanTratamiento","Registro")">
+    <div class="container">
+        <article>
+            <table class="table table-striped">
+                <tr>
+                    <td>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">DIAGNOSTICO</span>
+                        </div>
+                        <textarea class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="diagnostico" type="text" rows="5" cols="30"></textarea>
+                    </td>
+                    <td>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">PRONOSTICO</span>
+                        </div>
+                        <textarea class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="pronostico" type="text" rows="5" cols="30"></textarea>
+                    </td>
+                    <td>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">TRATAMIENTO</span>
+                        </div>
+                        <textarea class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="tratamiento" type="text" rows="5" cols="30"></textarea>
+                    </td>
+                </tr>
+                <tr></tr>
+            </table>
+            <br/>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Fecha</td>
+                        <td>Diente</td>
+                        <td>Tratamiento efectuado</td>
+                        <td>Doctor</td>
+                        <td>Firma paciente</td>
+                    </tr>
+                </thead>
+                <tr>
+                    @foreach (var item in ViewBag.Tratamiento)
+                    {
+                        <td>
+                            <input type="date" name="fecha" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                        </td>
+                        <td>    
+                            <input type="text" name="diente" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                        </td>
+                        <td>
+                            <input type="text" name="tratamiento" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                        </td>
+                        <td>
+                            <input type="text" name="doctor" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                        </td>
+                        <td>
+                            <input type="text" name="firma" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                        </td>
+                    }
+                </tr>
+            </table>
+        </article>
+    </div>
+</form>

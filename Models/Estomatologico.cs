@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 
 namespace OdontologiaWeb.Models
 {
@@ -16,5 +16,6 @@ namespace OdontologiaWeb.Models
         public int Frenillos { get; set; }
         public int Maxilares { get; set; }
         public int Glan_Salivales { get; set; }
+        public DateTime Atencion { get; set; }
     }
 }

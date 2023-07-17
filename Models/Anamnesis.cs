@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace OdontologiaWeb.Models
@@ -9,5 +10,6 @@ namespace OdontologiaWeb.Models
         public string Id_Usuario { get; set; }
         public string Motivo_Consulta { get; set; }
         public string Emf_Actual { get; set; }
+        public DateTime Atencion { get; set; }
     }
 }

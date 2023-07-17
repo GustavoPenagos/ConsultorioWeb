@@ -2,7 +2,14 @@
 @{
     ViewBag.Title = "RegistroUsuario";
 }
-
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#buscar').select2();
+        });
+    </script>
+}
 <h1>Registro de usuarios</h1>
 <br />
 <main>
@@ -31,7 +38,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Tipo identificacion</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" id="tp_doc" name="tp_doc">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="tp_doc">
                                 @foreach (var item in ViewBag.Documentos)
                                 {
                                     <option value="@item.Id_Documento">@item.Documento</option>
@@ -73,7 +80,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Ciudad de nacimiento</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="ciudad">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="ciudad" id="buscar">
                                 @foreach (var item in ViewBag.Ciudades)
                                 {
                                     <option value="@item.Id_Ciudad">@item.Municipio</option>
@@ -87,7 +94,8 @@
                                 <span class="input-group-text" id="inputGroup-sizing-default">Sexo</span>
                             </div>
                             <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="sexo">
-                                @foreach(var item in ViewBag.Genero) {
+                                @foreach (var item in ViewBag.Genero)
+                                {
                                     <option value="@item.Id_Genero">@item.Sexo</option>
                                 }
                             </select>
@@ -153,20 +161,19 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Motivo de consulta</span>
                                 </div>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="100" name="MTV_consulta"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" cols="30" name="MTV_consulta"></textarea>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Historial de enfermedad actual</span>
                                 </div>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="100" name="HA_actual"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" cols="30" name="HA_actual"></textarea>
                             </td>
                         </tr>
                     </thead>
                 </table>
                 <table class="table table-striped">
                     <tbody>
-
                     </tbody>
                 </table>
             </article>
@@ -499,7 +506,22 @@
                     </tr>
                 </table>
             </article>
-            @* FIN DE LA PARTE 4 DEL FOMULARIO *@        
+            <article>
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">CARTA DENTAL</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="carta">
+                                <option value="1">ADULTOS</option>
+                                <option value="2">NIÑOS</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </article><br />
+            @* FIN DE LA PARTE 4 DEL FOMULARIO *@
             @* GUARDAR DATOS DEL FORMULARIO *@
             <table class="table table-striped">
                 <tfoot>
@@ -513,7 +535,10 @@
         </div>
     </form>
 </main>
-<script type="text/javascript">
 
-</script>
-<br /><br /><br /><br /><br /><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

@@ -29,12 +29,17 @@ namespace ConsultorioWeb.Controllers
             ViewBag.Genero = generos;
             return View();
         }
-        public ActionResult RegistroCartaDental(int carta = 0)
+        public async Task<dynamic> RegistroCartaDental(int carta = 1)
         {
-            var conv = Convecciones();
+            var conv = await Convecciones();
             ViewBag.Carta = carta;
-            ViewBag.Conveccion = conv; 
+            ViewBag.Convecciones = conv; 
             return View();           
+        }
+        public async Task<dynamic> PlanTratamiento()
+        {
+            ViewBag.Tratamiento = await ListaTratamiento();
+            return View();
         }
 
         /// <summary>
@@ -84,8 +89,9 @@ namespace ConsultorioWeb.Controllers
                     {
                         Id_Usuario = id_usuario,
                         Motivo_Consulta = MTV_consulta,
-                        Emf_Actual = HA_actual
-                        
+                        Emf_Actual = HA_actual,
+                        Atencion = DateTime.Now
+
                     };
 
                     json = new StringContent(JsonConvert.SerializeObject(anamnesis), Encoding.UTF8, "application/json");
@@ -117,7 +123,8 @@ namespace ConsultorioWeb.Controllers
                             Lactancia = lactancia,
                             Fre_Cepillado = frec_cepilla,
                             Ceda_Dental = ceda,
-                            Observaciones = observacion
+                            Observaciones = observacion,
+                            Atencion = DateTime.Now
                         };
 
                         json = new StringContent(JsonConvert.SerializeObject(familiar), Encoding.UTF8, "application/json");
@@ -138,7 +145,8 @@ namespace ConsultorioWeb.Controllers
                                 Orofarige = orofaringe,
                                 Frenillos = frenillos,
                                 Maxilares = maxilares,
-                                Glan_Salivales = glan_saliva
+                                Glan_Salivales = glan_saliva,
+                                Atencion = DateTime.Now
                             };
 
                             json = new StringContent(JsonConvert.SerializeObject(familiar), Encoding.UTF8, "application/json");
@@ -146,29 +154,16 @@ namespace ConsultorioWeb.Controllers
                             HttpResponseMessage responseEst = await httpClient.PostAsync(apiEst, json);
                             if (responseEst.IsSuccessStatusCode)
                             {
-
+                                return RedirectToAction("RegistroCartaDental", "Registro", carta);
                             }
-                            else
-                            {
-                                return RedirectToAction("RegistroUsuario", "Registro", usuario);
-                            }
+                            
                         }
-                        else
-                        {
-                            return RedirectToAction("RegistroUsuario", "Registro", usuario);
-                        }
+                        
                     }
-                    else
-                    {
-                        return RedirectToAction("RegistroUsuario", "Registro", usuario);
-                    }
+                    
                 }
-                else
-                {
-                    return RedirectToAction("RegistroUsuario", "Registro", usuario);
-                }
+                return RedirectToAction("RegistroUsuario", "Registro", usuario);
 
-                return RedirectToAction("RegistroCartaDental", "Registro", carta);
             }
             catch (Exception ex)
             {
@@ -185,8 +180,7 @@ namespace ConsultorioWeb.Controllers
                 HttpResponseMessage message = await client.GetAsync(apiConv);
                 if(message.IsSuccessStatusCode)
                 {
-                    string response = await message.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<List<Convecciones>>(response);
+                    return JsonConvert.DeserializeObject<List<Convecciones>>(await message.Content.ReadAsStringAsync());
                 }
                 return "";
             }
@@ -205,8 +199,7 @@ namespace ConsultorioWeb.Controllers
                 HttpResponseMessage message = await client.GetAsync(EC);
                 if(message.IsSuccessStatusCode)
                 {
-                    string response = await message.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<List<EstadoCivil>>(response);
+                    return JsonConvert.DeserializeObject<List<EstadoCivil>>(await message.Content.ReadAsStringAsync());
                 }
                 return "";
             }
@@ -225,8 +218,7 @@ namespace ConsultorioWeb.Controllers
                 HttpResponseMessage message = await client.GetAsync(apiTD); 
                 if(message.IsSuccessStatusCode) 
                 {
-                    string response = await message.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<List<TipoDocumento>>(response);
+                    return JsonConvert.DeserializeObject<List<TipoDocumento>>(await message.Content.ReadAsStringAsync());
                 }
                 return "";
             }
@@ -245,8 +237,7 @@ namespace ConsultorioWeb.Controllers
                 HttpResponseMessage message = await client.GetAsync(apiCiud);
                 if( message.IsSuccessStatusCode)
                 {
-                    string response = await message.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<List<Ciudad>>(response);
+                    return JsonConvert.DeserializeObject<List<Ciudad>>(await message.Content.ReadAsStringAsync());
                 }
                 return "";
             }
@@ -265,8 +256,7 @@ namespace ConsultorioWeb.Controllers
                 HttpResponseMessage message = await client.GetAsync(apiGenero);
                 if(message.IsSuccessStatusCode)
                 {
-                    string response = await message.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<List<Genero>>(response);
+                    return JsonConvert.DeserializeObject<List<Genero>>(await message.Content.ReadAsStringAsync());
                 }
                 return "";
             }
@@ -274,6 +264,26 @@ namespace ConsultorioWeb.Controllers
             {
                 return "";
             }
+        }
+
+        public async Task<dynamic> ListaTratamiento()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                string apiTrata = api + "/api/lista/estadotratamiento";
+                HttpResponseMessage message = await client.GetAsync(apiTrata);
+                if( message.IsSuccessStatusCode)
+                {
+                    return JsonConvert.DeserializeObject<List<EstadoTratamiento>>(await message.Content.ReadAsStringAsync());
+                }
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return "";
         }
     }
 }

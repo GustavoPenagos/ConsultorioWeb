@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace OdontologiaWeb.Models
@@ -28,5 +29,6 @@ namespace OdontologiaWeb.Models
         public int Fre_Cepillado { get; set; }
         public int Ceda_Dental { get; set; }
         public string Observaciones { get; set; }
+        public DateTime Atencion { get; set; }
     }
 }

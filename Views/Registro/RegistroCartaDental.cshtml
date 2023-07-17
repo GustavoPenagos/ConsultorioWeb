@@ -3,11 +3,11 @@
     ViewBag.Title = "RegistroCartaDental";
 }
 
-<h2>RegistroCartaDental</h2>
-<br />
 <main>
-    @if (ViewBag.Carta == 1)
+    @if (ViewBag.Carta == 2)
     {
+        <h2>Carta Dental Niños</h2>
+        <br />
         <form>
             <div class="container">
                 <article>
@@ -21,8 +21,9 @@
                                     <span class="input-group-text" id="inputGroup-sizing-default">55</span>
                                 </div>
                                 <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="55">
-                                    @foreach (var item in ViewBag.Convecciones){
-                                    <option value="@item.Id" id="55">@item.Conveccion</option>
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="55">@item.Conveccion</option>
                                     }
                                 </select>
                             </td>
@@ -35,7 +36,7 @@
                                     {
                                         <option value="@item.Id" id="65">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
@@ -46,7 +47,7 @@
                                     {
                                         <option value="@item.Id" id="75">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
@@ -57,7 +58,7 @@
                                     {
                                         <option value="@item.Id" id="85">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                         </tr>
                         <tr>
@@ -70,7 +71,7 @@
                                     {
                                         <option value="@item.Id" id="54">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
@@ -81,7 +82,7 @@
                                     {
                                         <option value="@item.Id" id="64">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
@@ -92,7 +93,7 @@
                                     {
                                         <option value="@item.Id" id="74">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
@@ -103,7 +104,7 @@
                                     {
                                         <option value="@item.Id" id="84">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                         </tr>
                         <tr>
@@ -116,7 +117,7 @@
                                     {
                                         <option value="@item.Id" id="53">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
@@ -127,7 +128,7 @@
                                     {
                                         <option value="@item.Id" id="63">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
@@ -138,7 +139,7 @@
                                     {
                                         <option value="@item.Id" id="73">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
@@ -149,7 +150,7 @@
                                     {
                                         <option value="@item.Id" id="83">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                         </tr>
                         <tr>
@@ -162,7 +163,7 @@
                                     {
                                         <option value="@item.Id" id="52">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
@@ -173,7 +174,7 @@
                                     {
                                         <option value="@item.Id" id="62">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
@@ -184,7 +185,7 @@
                                     {
                                         <option value="@item.Id" id="72">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
@@ -195,7 +196,7 @@
                                     {
                                         <option value="@item.Id" id="82">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                         </tr>
                         <tr>
@@ -208,7 +209,7 @@
                                     {
                                         <option value="@item.Id" id="51">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
@@ -219,7 +220,7 @@
                                     {
                                         <option value="@item.Id" id="61">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
@@ -230,7 +231,7 @@
                                     {
                                         <option value="@item.Id" id="71">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
@@ -241,23 +242,22 @@
                                     {
                                         <option value="@item.Id" id="81">@item.Conveccion</option>
                                     }
-                                    </select>
+                                </select>
                             </td>
                         </tr>
                     </table>
                 </article>
             </div>
         </form>
-        
+
     }
-    else
+    else if(ViewBag.Carta == 1)
     {
-        <form>
+        <h2>Carta Dental Adultos</h2>
+        <br />
+        <form action="@Url.Action("PlanTratamiento","Registro")">
             <div class="container">
                 <article>
-                    <header>
-                        <h2>Carta dental asultos</h2>
-                    </header>
                     <table class="table table-striped">
                         <tr>
                             <td>
@@ -631,8 +631,22 @@
                     </table>
                 </article>
             </div>
+            <table class="table table-striped">
+                <tfoot>
+                    <tr>
+                        <td colspan="2">
+                            <center><button type="submit" class="btn btn-primary" style="width:50%; ">Siguiente</button></center>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
         </form>
     }
 
 </main>
-
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
