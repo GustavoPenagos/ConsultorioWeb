@@ -29,16 +29,25 @@ namespace ConsultorioWeb.Controllers
             ViewBag.Genero = generos;
             return View();
         }
-        public async Task<dynamic> RegistroCartaDental(int carta = 1)
+        public async Task<dynamic> RegistroCartaDental()
         {
+            List<dynamic> lista = TempData["list"] as List<dynamic>;
+            int carta = 0; long idUsuario=0;
+            for(int i=0;i<lista.Count; i++)
+            {
+                carta = lista[0];
+                idUsuario = lista[1];
+            }
+            //
             var conv = await Convecciones();
             ViewBag.Carta = carta;
             ViewBag.Convecciones = conv; 
+            ViewBag.idUsuario = idUsuario;
             return View();           
         }
         public async Task<dynamic> PlanTratamiento()
         {
-            ViewBag.Tratamiento = await ListaTratamiento();
+            //ViewBag.Tratamiento = await Tratamiento();
             return View();
         }
 
@@ -46,13 +55,13 @@ namespace ConsultorioWeb.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
-        public async Task<dynamic> InsertarCliente(string nombre, string apellido, int tp_doc, string id_usuario, int civil, DateTime f_nacido,int edad, int sexo, string ocupacion,
+        public async Task<dynamic> InsertarCliente(string nombre, string apellido, int tp_doc, long id_usuario, int civil, DateTime f_nacido,int edad, int sexo, string ocupacion,
             int ciudad, string asrgura, string direccion, string telefono, string oficina, string acudiente, string referido
         /**/, string MTV_consulta, string HA_actual,int sinusitis, int org_snt, int infecciones, int hepatitis, int trans_gastico, int cardiopatias, int fieb_reumatica
             , int trat_medico, int enf_respira, int hipertension, int alt_coagula, int trans_neumolo
         ,/**/ int cancer, int diabetes, int ten_arterial, string otros, int emabrazo, int meses, int lactancia, int frec_cepilla, int ceda, string observacion
         ,/**/ int labios, int lengua, int frenillos, int encias, int musculo, int maxilares, int paladar, int piso_boca, int glan_saliva, int carrillos, int orofaringe
-        ,/**/ int carta=1)
+        ,/**/ int carta)
         {
             StringContent json;
             try
@@ -154,7 +163,8 @@ namespace ConsultorioWeb.Controllers
                             HttpResponseMessage responseEst = await httpClient.PostAsync(apiEst, json);
                             if (responseEst.IsSuccessStatusCode)
                             {
-                                return RedirectToAction("RegistroCartaDental", "Registro", carta);
+                                TempData["list"] = new List<dynamic> { carta, id_usuario };
+                                return RedirectToAction("RegistroCartaDental", "Registro");
                             }
                             
                         }
@@ -170,7 +180,70 @@ namespace ConsultorioWeb.Controllers
                 return RedirectToAction("RegistroUsuario","Registro");
             }
         }
-        
+
+        public async Task<dynamic> InsertarTratamiento(List<DateTime> fecha, List<string> diente, List<string> tratamiento, List<string> doctor, List<string> firma
+            , string diagnostico, string pronostico, string tratamientos, long idUsuario)
+        {
+            StringContent json;
+            try
+            {
+                PlanTratamiento planTratamiento = new PlanTratamiento
+                {
+                    Id_Usuario = idUsuario,
+                    Diagnostico = diagnostico,
+                    Pronostico = pronostico,
+                    Tratamiento = tratamientos,
+                    Atencion = DateTime.Now
+                };
+                HttpClient client = new HttpClient();
+
+                json = new StringContent(JsonConvert.SerializeObject(planTratamiento), Encoding.UTF8, "application/json");
+                string apiTrata = api + "/registro/plantratamiento";
+                HttpResponseMessage responseUser = await client.PostAsync(apiTrata, json);
+
+                if (responseUser.IsSuccessStatusCode)
+                {
+                    for (int i = 0; i < fecha.Count; i++)
+                    {
+                        EstadoTratamiento estado = new EstadoTratamiento
+                        {
+                            Id_Usuario = idUsuario,
+                            Fecha = fecha[i],
+                            Diente = diente[i],
+                            Trata_Efectuado = tratamiento[i],
+                            Doctor = doctor[i],
+                            Firma = firma[i]
+                        };
+                        json = new StringContent(JsonConvert.SerializeObject(estado), Encoding.UTF8, "application/json");
+                        string apiEstado = api + "/registro/plantratamiento";
+                        HttpResponseMessage responseEstado = await client.PostAsync(apiEstado, json);
+
+                        if (responseEstado.IsSuccessStatusCode)
+                        {
+                            if (i == fecha.Count)
+                            {
+                                return RedirectToAction("", "");
+                            }
+                        }
+                        else
+                        {
+                            return RedirectToAction("PlanTratamiento", "Registro");
+                        }
+
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("PlanTratamiento", "Registro");
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return "";
+        }
+
         public async Task<dynamic> Convecciones()
         {
             try
@@ -266,7 +339,7 @@ namespace ConsultorioWeb.Controllers
             }
         }
 
-        public async Task<dynamic> ListaTratamiento()
+        public async Task<dynamic> Tratamiento()
         {
             try
             {

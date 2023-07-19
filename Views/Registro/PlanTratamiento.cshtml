@@ -4,66 +4,122 @@
 }
 
 <h2>Plan Del Tratamiento</h2>
-
-<br />
-<form action="@Url.Action("PlanTratamiento","Registro")">
-    <div class="container">
-        <article>
-            <table class="table table-striped">
-                <tr>
-                    <td>
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">DIAGNOSTICO</span>
-                        </div>
-                        <textarea class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="diagnostico" type="text" rows="5" cols="30"></textarea>
-                    </td>
-                    <td>
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">PRONOSTICO</span>
-                        </div>
-                        <textarea class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="pronostico" type="text" rows="5" cols="30"></textarea>
-                    </td>
-                    <td>
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">TRATAMIENTO</span>
-                        </div>
-                        <textarea class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="tratamiento" type="text" rows="5" cols="30"></textarea>
-                    </td>
-                </tr>
-                <tr></tr>
-            </table>
-            <br/>
-            <table class="table table-striped">
-                <thead>
+<main>
+    <form action="@Url.Action("InsertarTratamiento","Registro")">
+        <div class="container">
+            <article>
+                <table class="table table-striped" ">
                     <tr>
-                        <td>Fecha</td>
-                        <td>Diente</td>
-                        <td>Tratamiento efectuado</td>
-                        <td>Doctor</td>
-                        <td>Firma paciente</td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">DIAGNOSTICO</span>
+                            </div>
+                            <textarea class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="diagnostico" type="text" rows="5" cols="30"></textarea>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">PRONOSTICO</span>
+                            </div>
+                            <textarea class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="pronostico" type="text" rows="5" cols="30"></textarea>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">TRATAMIENTO</span>
+                            </div>
+                            <textarea class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="tratamientos" type="text" rows="5" cols="30"></textarea>
+                        </td>
                     </tr>
-                </thead>
-                <tr>
-                    @foreach (var item in ViewBag.Tratamiento)
-                    {
-                        <td>
-                            <input type="date" name="fecha" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                    <tr></tr>
+                </table>
+                <table class="table table-striped" border="1">
+                    <thead>
+                        <tr>
+                            <td>Fecha</td>
+                            <td>Diente</td>
+                            <td>Tratamiento efectuado</td>
+                            <td>Doctor</td>
+                            <td>Firma paciente</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @**@
+                        <tr>
+                            <td>
+                                <input type="date" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly/>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly/>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly/>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly/>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly/>
+                            </td>
+                        </tr>
+                        @**@
+                    </tbody>
+                </table>
+                    <table class="table table-striped" id="tblDatos" border="1">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="date" name="fecha" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                                </td>
+                                <td>
+                                    <input type="text" name="diente" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Diente"/>
+                                </td>
+                                <td>
+                                    <input type="text" name="tratamiento" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Tratamiento"/>
+                                </td>
+                                <td>
+                                    <input type="text" name="doctor" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Doctor"/>
+                                </td>
+                                <td>
+                                    <input type="text" name="firma" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Firma"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <center><input type="button" class="btn btn-primary" onclick="insertarFila()" value="Insertar fila" style="width:50%; "/></center>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+            </article>
+            <table class="table table-striped">
+                <tfoot>
+                    <tr>
+                        <td colspan="2">
+                            <center><button type="submit" class="btn btn-primary" style="width:50%; ">Guardar</button></center>
                         </td>
-                        <td>    
-                            <input type="text" name="diente" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
-                        </td>
-                        <td>
-                            <input type="text" name="tratamiento" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
-                        </td>
-                        <td>
-                            <input type="text" name="doctor" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
-                        </td>
-                        <td>
-                            <input type="text" name="firma" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
-                        </td>
-                    }
-                </tr>
+                    </tr>
+                </tfoot>
             </table>
-        </article>
-    </div>
-</form>
+        </div>
+    </form>
+    <br />
+        
+    
+        <script>
+            function insertarFila() {
+                let tblDatos = document.getElementById('tblDatos').insertRow(0);
+                let col1 = tblDatos.insertCell(0);
+                let col2 = tblDatos.insertCell(1);
+                let col3 = tblDatos.insertCell(2);
+                let col4 = tblDatos.insertCell(3);
+                let col5 = tblDatos.insertCell(4);
+
+                col1.innerHTML = '<td><input type="date" name="fecha" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Fecha"/></td>';
+                col2.innerHTML = '<td><input type="text" name="diente" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Diente"/></td>';
+                col3.innerHTML = '<td><input type="text" name="tratamiento" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Tratamiento"/></td>';
+                col4.innerHTML = '<td><input type="text" name="doctor" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Doctor"/></td>';
+                col5.innerHTML = '<td><input type="text" name="firma" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Firma"/></td>';
+            }
+        </script>
+</main>

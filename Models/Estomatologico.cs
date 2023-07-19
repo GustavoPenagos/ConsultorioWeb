@@ -4,7 +4,7 @@ namespace OdontologiaWeb.Models
 {
     public class Estomatologico
     {
-        public string Id_Usuario { get; set; }
+        public long Id_Usuario { get; set; }
         public int Labios { get; set; }
         public int Encias { get; set; }
         public int Paladar { get; set; }

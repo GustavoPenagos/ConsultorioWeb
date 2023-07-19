@@ -6,7 +6,7 @@ namespace OdontologiaWeb.Models
 {
     public class Ant_Familiar
     {
-        public string Id_Usuario { get; set; }
+        public long Id_Usuario { get; set; }
         public int Cancer { get; set; }
         public int Sinusitis { get; set; }
         public int Organos_Sentidos { get; set; }
