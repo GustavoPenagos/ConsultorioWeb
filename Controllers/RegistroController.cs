@@ -31,18 +31,10 @@ namespace ConsultorioWeb.Controllers
         }
         public async Task<dynamic> RegistroCartaDental()
         {
-            List<dynamic> lista = TempData["list"] as List<dynamic>;
-            int carta = 0; long idUsuario=0;
-            for(int i=0;i<lista.Count; i++)
-            {
-                carta = lista[0];
-                idUsuario = lista[1];
-            }
-            //
             var conv = await Convecciones();
-            ViewBag.Carta = carta;
+            ViewBag.Carta = TempData["carta"];
             ViewBag.Convecciones = conv; 
-            ViewBag.idUsuario = idUsuario;
+            ViewBag.idUsuario = TempData["idUsuario"];
             return View();           
         }
         public async Task<dynamic> PlanTratamiento()
