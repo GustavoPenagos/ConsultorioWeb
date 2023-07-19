@@ -163,7 +163,8 @@ namespace ConsultorioWeb.Controllers
                             HttpResponseMessage responseEst = await httpClient.PostAsync(apiEst, json);
                             if (responseEst.IsSuccessStatusCode)
                             {
-                                TempData["list"] = new List<dynamic> { carta, id_usuario };
+                                TempData["carta"] = carta;
+                                TempData["idUsuario"] = id_usuario;
                                 return RedirectToAction("RegistroCartaDental", "Registro");
                             }
                             
