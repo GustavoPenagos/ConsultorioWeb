@@ -40,6 +40,7 @@ namespace ConsultorioWeb.Controllers
         public async Task<dynamic> PlanTratamiento()
         {
             //ViewBag.Tratamiento = await Tratamiento();
+            ViewBag.idUsuario = TempData["idUsuario"];
             return View();
         }
 
@@ -91,8 +92,6 @@ namespace ConsultorioWeb.Controllers
                         Id_Usuario = id_usuario,
                         Motivo_Consulta = MTV_consulta,
                         Emf_Actual = HA_actual,
-                        Atencion = DateTime.Now
-
                     };
 
                     json = new StringContent(JsonConvert.SerializeObject(anamnesis), Encoding.UTF8, "application/json");
@@ -208,15 +207,11 @@ namespace ConsultorioWeb.Controllers
                             Firma = firma[i]
                         };
                         json = new StringContent(JsonConvert.SerializeObject(estado), Encoding.UTF8, "application/json");
-                        string apiEstado = api + "/registro/plantratamiento";
+                        string apiEstado = api + "/registro/estadotratamiento";
                         HttpResponseMessage responseEstado = await client.PostAsync(apiEstado, json);
 
                         if (responseEstado.IsSuccessStatusCode)
                         {
-                            if (i == fecha.Count)
-                            {
-                                return RedirectToAction("", "");
-                            }
                         }
                         else
                         {
@@ -224,6 +219,7 @@ namespace ConsultorioWeb.Controllers
                         }
 
                     }
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -232,9 +228,58 @@ namespace ConsultorioWeb.Controllers
             }
             catch(Exception ex)
             {
-
+                return RedirectToAction("PlanTratamiento", "Registro");
             }
-            return "";
+        }
+
+        public async Task<dynamic> InsertarCartaDentalAdulto(CartaDentalAdulto dentalAdulto)
+        {
+            try
+            {
+                var json = new StringContent(JsonConvert.SerializeObject(dentalAdulto), Encoding.UTF8, "application/json");
+                HttpClient client = new HttpClient();
+
+                string apiDental = api + "/registro/dentaladulto";
+                HttpResponseMessage message = await client.PostAsync(apiDental, json);
+                if (message.IsSuccessStatusCode)
+                {
+                    TempData["idUsuario"] = dentalAdulto.Id_Usuario;
+                    return RedirectToAction("PlanTratamiento", "Registro");
+                }
+                else
+                {
+                    return RedirectToAction("RegistroCartaDental", "Registro");
+                }
+            }
+            catch(Exception ex)
+            {
+                return RedirectToAction("RegistroCartaDental", "Registro");
+            }
+        }
+
+        public async Task<dynamic> InsertarCartaDentalNino(CartaDentalNino dentalNino)
+        {
+            try
+            {
+                var json = new StringContent(JsonConvert.SerializeObject(dentalNino), Encoding.UTF8, "application/json");
+                HttpClient client = new HttpClient();
+
+                string apiDental = api + "/registro/dentalnino";
+                HttpResponseMessage message = await client.PostAsync(apiDental, json);
+                if (message.IsSuccessStatusCode)
+                {
+                    TempData["idUsuario"] = dentalNino.Id_Usuario;
+                    return RedirectToAction("PlanTratamiento", "Registro");
+                }
+                else
+                {
+                    return RedirectToAction("RegistroCartaDental", "Registro");
+                }
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("RegistroCartaDental", "Registro");
+            }
         }
 
         public async Task<dynamic> Convecciones()

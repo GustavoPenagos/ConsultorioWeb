@@ -127,6 +127,8 @@
     </Compile>
     <Compile Include="Models\Anamnesis.cs" />
     <Compile Include="Models\Ant_Familiar.cs" />
+    <Compile Include="Models\CartaDentalAdulto.cs" />
+    <Compile Include="Models\CartaDentalNino.cs" />
     <Compile Include="Models\Ciudad.cs" />
     <Compile Include="Models\Convecciones.cs" />
     <Compile Include="Models\Departamento.cs" />

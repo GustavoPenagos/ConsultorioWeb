@@ -1,14 +1,19 @@
 ﻿
 @{
     ViewBag.Title = "PlanTratamiento";
+    DateTime date = DateTime.Now;
 }
 
 <h2>Plan Del Tratamiento</h2>
 <main>
-    <form action="@Url.Action("InsertarTratamiento","Registro")">
+    @using (Html.BeginForm("InsertarTratamiento", "Registro", FormMethod.Post))
+    {
+        <input class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="@ViewBag.idUsuario" name="idUsuario" type="text" readonly />
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="@date.ToString("dd/MM/yyyy")" name="Atencion" readonly />
+        <br />
         <div class="container">
             <article>
-                <table class="table table-striped" ">
+                <table class="table table-striped">
                     <tr>
                         <td>
                             <div class="input-group-prepend">
@@ -45,52 +50,52 @@
                         @**@
                         <tr>
                             <td>
-                                <input type="date" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly/>
+                                <input type="date" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly />
                             </td>
                             <td>
-                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly/>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly />
                             </td>
                             <td>
-                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly/>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly />
                             </td>
                             <td>
-                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly/>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly />
                             </td>
                             <td>
-                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly/>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly />
                             </td>
                         </tr>
                         @**@
                     </tbody>
                 </table>
-                    <table class="table table-striped" id="tblDatos" border="1">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <input type="date" name="fecha" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
-                                </td>
-                                <td>
-                                    <input type="text" name="diente" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Diente"/>
-                                </td>
-                                <td>
-                                    <input type="text" name="tratamiento" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Tratamiento"/>
-                                </td>
-                                <td>
-                                    <input type="text" name="doctor" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Doctor"/>
-                                </td>
-                                <td>
-                                    <input type="text" name="firma" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Firma"/>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="5">
-                                    <center><input type="button" class="btn btn-primary" onclick="insertarFila()" value="Insertar fila" style="width:50%; "/></center>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                <table class="table table-striped" id="tblDatos" border="1">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="date" name="fecha" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                            </td>
+                            <td>
+                                <input type="text" name="diente" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Diente" />
+                            </td>
+                            <td>
+                                <input type="text" name="tratamiento" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Tratamiento" />
+                            </td>
+                            <td>
+                                <input type="text" name="doctor" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Doctor" />
+                            </td>
+                            <td>
+                                <input type="text" name="firma" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Firma" />
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">
+                                <center><input type="button" class="btn btn-primary" onclick="insertarFila()" value="Insertar fila" style="width:50%; " /></center>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
             </article>
             <table class="table table-striped">
                 <tfoot>
@@ -102,24 +107,25 @@
                 </tfoot>
             </table>
         </div>
-    </form>
-    <br />
-        
-    
-        <script>
-            function insertarFila() {
-                let tblDatos = document.getElementById('tblDatos').insertRow(0);
-                let col1 = tblDatos.insertCell(0);
-                let col2 = tblDatos.insertCell(1);
-                let col3 = tblDatos.insertCell(2);
-                let col4 = tblDatos.insertCell(3);
-                let col5 = tblDatos.insertCell(4);
+    }
 
-                col1.innerHTML = '<td><input type="date" name="fecha" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Fecha"/></td>';
-                col2.innerHTML = '<td><input type="text" name="diente" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Diente"/></td>';
-                col3.innerHTML = '<td><input type="text" name="tratamiento" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Tratamiento"/></td>';
-                col4.innerHTML = '<td><input type="text" name="doctor" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Doctor"/></td>';
-                col5.innerHTML = '<td><input type="text" name="firma" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Firma"/></td>';
-            }
-        </script>
+    <br />
+
+
+    <script>
+        function insertarFila() {
+            let tblDatos = document.getElementById('tblDatos').insertRow(0);
+            let col1 = tblDatos.insertCell(0);
+            let col2 = tblDatos.insertCell(1);
+            let col3 = tblDatos.insertCell(2);
+            let col4 = tblDatos.insertCell(3);
+            let col5 = tblDatos.insertCell(4);
+
+            col1.innerHTML = '<td><input type="date" name="fecha" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Fecha"/></td>';
+            col2.innerHTML = '<td><input type="text" name="diente" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Diente"/></td>';
+            col3.innerHTML = '<td><input type="text" name="tratamiento" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Tratamiento"/></td>';
+            col4.innerHTML = '<td><input type="text" name="doctor" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Doctor"/></td>';
+            col5.innerHTML = '<td><input type="text" name="firma" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Firma"/></td>';
+        }
+    </script>
 </main>

@@ -1,15 +1,19 @@
 ﻿
 @{
     ViewBag.Title = "RegistroCartaDental";
+    DateTime date = DateTime.Now;
 }
 
 <main>
-    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="@ViewBag.idUsuario" readonly/>
     @if (ViewBag.Carta == 2)
     {
         <h2>Carta Dental Niños</h2>
         <br />
-        <form>
+        using (Html.BeginForm("InsertarCartaDentalNino", "Registro", FormMethod.Post))
+        {
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="@ViewBag.idUsuario" name="Id_Usuario" readonly />
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="@date.ToString("dd/MM/yyyy")" name="Atencion" readonly />
+            <br />
             <div class="container">
                 <article>
                     <header>
@@ -19,193 +23,9 @@
                         <tr>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">55</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="55">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="55">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">65</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="65">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="65">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">75</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="75">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="75">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">85</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="85">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="85">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">54</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="54">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="54">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">64</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="64">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="64">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">74</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="74">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="74">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">84</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="84">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="84">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">53</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="53">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="53">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">63</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="63">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="63">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">73</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="73">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="73">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">83</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="83">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="83">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">52</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="52">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="52">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">62</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="62">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="62">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">72</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="72">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="72">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">82</span>
-                                </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="82">
-                                    @foreach (var item in ViewBag.Convecciones)
-                                    {
-                                        <option value="@item.Id" id="82">@item.Conveccion</option>
-                                    }
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">51</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="51">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c51">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="51">@item.Conveccion</option>
@@ -216,7 +36,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">61</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="61">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c61">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="61">@item.Conveccion</option>
@@ -227,7 +47,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">71</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="71">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c71">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="71">@item.Conveccion</option>
@@ -238,7 +58,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">81</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="81">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c81">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="81">@item.Conveccion</option>
@@ -246,26 +66,222 @@
                                 </select>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">52</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c52">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="52">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">62</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c62">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="62">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">72</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c72">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="72">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">82</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c82">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="82">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">53</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c53">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="53">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">63</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c63">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="63">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">73</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c73">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="73">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">83</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c83">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="83">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">54</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c54">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="54">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">64</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c64">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="64">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">74</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c74">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="74">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">84</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c84">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="84">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">55</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c55">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="55">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">65</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c65">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="65">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">75</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c75">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="75">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">85</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c85">
+                                    @foreach (var item in ViewBag.Convecciones)
+                                    {
+                                        <option value="@item.Id" id="85">@item.Conveccion</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
                     </table>
                 </article>
             </div>
-        </form>
-
+            <table class="table table-striped">
+                <tfoot>
+                    <tr>
+                        <td colspan="2">
+                            <center><button type="submit" class="btn btn-primary" style="width:50%; ">Siguiente</button></center>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        }
     }
-    else if(ViewBag.Carta == 1)
+    else if (ViewBag.Carta == 1)
     {
         <h2>Carta Dental Adultos</h2>
         <br />
-        <form action="@Url.Action("PlanTratamiento","Registro")">
+        using (Html.BeginForm("InsertarCartaDentalAdulto", "Registro", FormMethod.Post))
+        {
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="@ViewBag.idUsuario" name="Id_Usuario" readonly />
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="@date.ToString("dd/MM/yyyy")" name="Atencion" readonly />
+            <br />
             <div class="container">
                 <article>
                     <table class="table table-striped">
                         <tr>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">18</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">11</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="18">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c11">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="18">@item.Conveccion</option>
@@ -274,9 +290,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">28</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">21</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="28">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c21">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="28">@item.Conveccion</option>
@@ -285,9 +301,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">38</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">31</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="38">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c31">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="38">@item.Conveccion</option>
@@ -296,9 +312,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">48</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">41</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="48">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c41">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="48">@item.Conveccion</option>
@@ -309,9 +325,9 @@
                         <tr>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">17</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">12</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="17">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c12">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="17">@item.Conveccion</option>
@@ -320,9 +336,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">27</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">22</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="27">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c22">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="27">@item.Conveccion</option>
@@ -331,9 +347,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">37</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">32</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="37">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c32">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="37">@item.Conveccion</option>
@@ -342,9 +358,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">47</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">42</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="47">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c42">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="47">@item.Conveccion</option>
@@ -355,9 +371,9 @@
                         <tr>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">16</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">13</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="16">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c13">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="16">@item.Conveccion</option>
@@ -366,9 +382,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">26</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">23</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="26">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c23">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="26">@item.Conveccion</option>
@@ -377,9 +393,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">36</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">33</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="36">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c33">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="36">@item.Conveccion</option>
@@ -388,9 +404,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">46</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">43</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="46">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c43">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="46">@item.Conveccion</option>
@@ -401,9 +417,9 @@
                         <tr>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">15</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">14</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="15">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c14">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="15">@item.Conveccion</option>
@@ -412,9 +428,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">25</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">23</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="25">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c24">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="25">@item.Conveccion</option>
@@ -423,9 +439,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">35</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">34</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="35">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c34">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="35">@item.Conveccion</option>
@@ -434,9 +450,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">45</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">44</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="45">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c44">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="45">@item.Conveccion</option>
@@ -447,9 +463,9 @@
                         <tr>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">14</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">15</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="14">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c15">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="14">@item.Conveccion</option>
@@ -458,9 +474,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">24</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">25</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="24">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c25">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="24">@item.Conveccion</option>
@@ -469,9 +485,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">34</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">35</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="34">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c35">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="34">@item.Conveccion</option>
@@ -480,9 +496,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">44</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">45</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="44">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c45">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="44">@item.Conveccion</option>
@@ -493,9 +509,9 @@
                         <tr>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">13</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">16</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="13">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c16">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="13">@item.Conveccion</option>
@@ -504,9 +520,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">23</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">26</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="23">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c26">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="23">@item.Conveccion</option>
@@ -515,9 +531,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">33</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">36</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="33">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c36">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="33">@item.Conveccion</option>
@@ -526,9 +542,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">43</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">46</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="43">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c46">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="43">@item.Conveccion</option>
@@ -539,9 +555,9 @@
                         <tr>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">12</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">17</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="12">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c17">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="12">@item.Conveccion</option>
@@ -550,9 +566,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">22</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">27</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="22">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c27">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="22">@item.Conveccion</option>
@@ -561,9 +577,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">23</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">37</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="23">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c37">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="23">@item.Conveccion</option>
@@ -572,9 +588,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">24</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">47</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="24">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c47">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="24">@item.Conveccion</option>
@@ -585,9 +601,9 @@
                         <tr>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">11</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">18</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="11">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c18">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="11">@item.Conveccion</option>
@@ -596,9 +612,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">12</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">28</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="12">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c28">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="12">@item.Conveccion</option>
@@ -607,9 +623,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">13</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">38</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="13">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c38">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="13">@item.Conveccion</option>
@@ -618,9 +634,9 @@
                             </td>
                             <td>
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">14</span>
+                                    <span class="input-group-text" id="inputGroup-sizing-default">48</span>
                                 </div>
-                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="14">
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="c48">
                                     @foreach (var item in ViewBag.Convecciones)
                                     {
                                         <option value="@item.Id" id="14">@item.Conveccion</option>
@@ -641,7 +657,8 @@
                     </tr>
                 </tfoot>
             </table>
-        </form>
+        }
+
     }
 
 </main>
