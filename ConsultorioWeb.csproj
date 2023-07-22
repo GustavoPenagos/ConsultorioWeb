@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListaController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -129,6 +130,7 @@
     <Compile Include="Models\Ant_Familiar.cs" />
     <Compile Include="Models\CartaDentalAdulto.cs" />
     <Compile Include="Models\CartaDentalNino.cs" />
+    <Compile Include="Models\Citas.cs" />
     <Compile Include="Models\Ciudad.cs" />
     <Compile Include="Models\Convecciones.cs" />
     <Compile Include="Models\Departamento.cs" />
@@ -193,9 +195,12 @@
     <Content Include="Views\Registro\RegistroUsuario.cshtml" />
     <Content Include="Views\Registro\RegistroCartaDental.cshtml" />
     <Content Include="Views\Registro\PlanTratamiento.cshtml" />
+    <Content Include="Views\Registro\RegistrarCita.cshtml" />
+    <Content Include="Views\Lista\Citas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Buscar\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

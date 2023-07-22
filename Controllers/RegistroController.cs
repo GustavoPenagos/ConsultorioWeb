@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -43,6 +44,22 @@ namespace ConsultorioWeb.Controllers
             ViewBag.idUsuario = TempData["idUsuario"];
             return View();
         }
+        public async Task<dynamic> RegistrarCita(long id, string nombre)
+        {
+            var cita = await new HomeController().BuscarCita(id);
+            if (cita == "[]")
+            {
+                ViewBag.Cita = null;
+                ViewBag.Nombre = nombre;
+                ViewBag.Id = id;
+                return View();
+            }
+            else
+            {
+                ViewBag.Cita = cita;
+                return View();
+            }
+        }
 
         /// <summary>
         /// 
@@ -50,15 +67,20 @@ namespace ConsultorioWeb.Controllers
         /// <returns></returns>
         public async Task<dynamic> InsertarCliente(string nombre, string apellido, int tp_doc, long id_usuario, int civil, DateTime f_nacido,int edad, int sexo, string ocupacion,
             int ciudad, string asrgura, string direccion, string telefono, string oficina, string acudiente, string referido
-        /**/, string MTV_consulta, string HA_actual,int sinusitis, int org_snt, int infecciones, int hepatitis, int trans_gastico, int cardiopatias, int fieb_reumatica
-            , int trat_medico, int enf_respira, int hipertension, int alt_coagula, int trans_neumolo
-        ,/**/ int cancer, int diabetes, int ten_arterial, string otros, int emabrazo, int meses, int lactancia, int frec_cepilla, int ceda, string observacion
-        ,/**/ int labios, int lengua, int frenillos, int encias, int musculo, int maxilares, int paladar, int piso_boca, int glan_saliva, int carrillos, int orofaringe
-        ,/**/ int carta)
+            , string MTV_consulta, string HA_actual,int sinusitis, int org_snt, int infecciones, int hepatitis, int trans_gastico, int cardiopatias, int fieb_reumatica
+            , int trat_medico, int enf_respira, int hipertension, int alt_coagula, int trans_neumolo, int cancer, int diabetes, int ten_arterial, string otros, int emabrazo, int meses, int lactancia, int frec_cepilla, int ceda, string observacion
+            , int labios, int lengua, int frenillos, int encias, int musculo, int maxilares, int paladar, int piso_boca, int glan_saliva, int carrillos, int orofaringe
+            , int carta)
         {
             StringContent json;
             try
             {
+                HttpClient httpClient = new HttpClient();
+                string apiDept = api + "/api/buscar/departamento";
+                HttpResponseMessage message = await httpClient.GetAsync(apiDept + "?id=" + ciudad);
+                string departamento = await message.Content.ReadAsStringAsync();
+                
+                //
                 Usuario usuario = new Usuario
                 {
                     Id_Usuario=id_usuario,
@@ -74,7 +96,8 @@ namespace ConsultorioWeb.Controllers
                     Telefono = telefono,
                     Id_Genero=sexo,
                     Id_Ciudad=ciudad,
-                    Oficina =oficina,
+                    Id_Departamento = Convert.ToInt32(departamento),
+                    Oficina = oficina,
                     Nombre_Acudiente=acudiente,
                     Referido=referido,
                     Observaciones=observacion,  
@@ -83,7 +106,7 @@ namespace ConsultorioWeb.Controllers
                 json = new StringContent(JsonConvert.SerializeObject(usuario), Encoding.UTF8, "application/json");
                 string apiUser = api + "/registro/usuario";
 
-                HttpClient httpClient = new HttpClient();
+                
                 HttpResponseMessage responseUser = await httpClient.PostAsync(apiUser, json);
                 if (responseUser.IsSuccessStatusCode)
                 {
@@ -282,6 +305,34 @@ namespace ConsultorioWeb.Controllers
             }
         }
 
+        public async Task<dynamic> InsertarCita(Citas citas)
+        {
+            try
+            {
+                var cita = new Citas
+                {
+                    Id_Usuario = citas.Id_Usuario,
+                    FechaCita = Convert.ToDateTime(citas.FechaCita.ToShortDateString()),
+                    HoraCita = citas.FechaCita.ToShortTimeString()
+                };
+                HttpClient client = new HttpClient();
+                var json = new StringContent(JsonConvert.SerializeObject(cita), Encoding.UTF8, "application/json");
+                string apiCitas = api + "/registro/citas";
+                HttpResponseMessage message = await client.PostAsync(apiCitas, json);
+                if (message.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return RedirectToAction("RegistrarCita", "Registro");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("RegistrarCita", "Registro");
+            }
+        }
+
+        //
+
         public async Task<dynamic> Convecciones()
         {
             try
@@ -396,5 +447,6 @@ namespace ConsultorioWeb.Controllers
             }
             return "";
         }
+
     }
 }

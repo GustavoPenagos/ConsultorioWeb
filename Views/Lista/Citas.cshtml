@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Citas";
+}
+
+<h2>Lista de citas</h2>
+<main>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Identificacion</td>
+                    <td>Nombre</td>
+                    <td>Fecha de cita</td>
+                    <td>Hora de cita</td>
+                </tr>
+            </thead>
+            <tdoy>
+                @foreach (var item in ViewBag.Citas)
+                {
+                    <tr>
+                        <td>@item.documento</td>
+                        <td>@item.nombre @item.apellido</td>
+                        <td>@item.fecha</td>
+                        <td>@item.hora</td>
+                    </tr>
+                }
+            </tdoy>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</main>
+

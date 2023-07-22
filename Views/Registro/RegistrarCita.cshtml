@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "RegistrarCita";
+}
+
+<h2>Registrar una cita</h2>
+<br />
+<main>
+    <div class="container">
+        @using (Html.BeginForm("InsertarCita", "Registro", FormMethod.Post))
+        {
+            <table class="table table-striped">
+                @if (ViewBag.Cita == null)
+                {
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="nombre" value="@ViewBag.Nombre" readonly>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Identificacion</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Id_Usuario" value="@ViewBag.Id" readonly>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Fecha anterior</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="nombre" value="Sin Fecha" readonly>
+                            </td>
+                        </tr>
+                    </tbody>
+                }
+                else
+                {
+            <tbody>
+                @foreach (var item in ViewBag.Persona)
+                {
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="nombre" value="@item.Nombre" readonly>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="nombre" value="@item.Identificacion" readonly>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="nombre" value="@item.CitaAnterior" readonly>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="nombre" value="Sin Fecha" readonly>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+                }
+                <tfoot>
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Nueva cita</span>
+                            </div>
+                            <input type="datetime-local" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="FechaCita" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <center><button type="submit" class="btn btn-primary" style="width:50%; ">Guardar</button></center>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        }
+    </div>
+</main>
+
