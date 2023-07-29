@@ -23,6 +23,16 @@
                         <td>@item.nombre @item.apellido</td>
                         <td>@item.fecha</td>
                         <td>@item.hora</td>
+                        <td>
+                            <a href="@Url.Action("RegistrarCita","Registro", new { id = item.documento })">
+                                <img src="~/Content/Images/Edit.svg" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("EliminarCita","Crud", new {id = item.documento})">
+                                <img src="~/Content/Images/Delete.svg" />
+                            </a>
+                        </td>
                     </tr>
                 }
             </tdoy>

@@ -27,13 +27,13 @@
                             <td>@item.genero</td>
                             <td>@item.municipio</td>
                             <td>@item.departamento </td>
-                            <td>
-                                <a href="@Url.Action("metodo","controlador")">
+                            @*<td>
+                                <a href="@Url.Action("RegistroUsuario","Registro", new {id = item.id_Usuario})">
                                     <img src="~/Content/Images/Edit.svg" />
                                 </a>
-                            </td>
+                            </td>*@
                             <td>
-                                <a href="@Url.Action("EliminarUsuario","Home", new {id = item.id_Usuario})">
+                                <a href="@Url.Action("EliminarUsuario","Crud", new {id = item.id_Usuario})">
                                     <img src="~/Content/Images/Delete.svg" />
                                 </a>
                             </td>

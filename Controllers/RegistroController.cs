@@ -17,8 +17,13 @@ namespace ConsultorioWeb.Controllers
     public class RegistroController : Controller
     {
         public readonly string api = System.Configuration.ConfigurationManager.AppSettings["UrlAPI"];
-        public async Task<dynamic> RegistroUsuario()
+        public async Task<dynamic> RegistroUsuario(long id=0)
         {
+            if(id != 0)
+            {
+                var usuario = await new HomeController().BuscarUsuario(id, "editarUsuario");
+                ViewBag.Usuario = JsonConvert.DeserializeObject(usuario);
+            }
             var estadoCivil = await EstadoCivil();
             var documentos = await TiposDocumentos();
             var ciudades = await Ciudades();
@@ -44,7 +49,7 @@ namespace ConsultorioWeb.Controllers
             ViewBag.idUsuario = TempData["idUsuario"];
             return View();
         }
-        public async Task<dynamic> RegistrarCita(long id, string nombre)
+        public async Task<dynamic> RegistrarCita(long id, string nombre="")
         {
             var cita = await new HomeController().BuscarCita(id);
             if (cita == "[]")
@@ -56,7 +61,7 @@ namespace ConsultorioWeb.Controllers
             }
             else
             {
-                ViewBag.Cita = cita;
+                ViewBag.Cita = JsonConvert.DeserializeObject(cita);
                 return View();
             }
         }
@@ -309,6 +314,11 @@ namespace ConsultorioWeb.Controllers
         {
             try
             {
+                var hora = citas.FechaCita.ToShortTimeString();
+                if (hora.Equals("12:00 a. m."))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
                 var cita = new Citas
                 {
                     Id_Usuario = citas.Id_Usuario,
@@ -330,8 +340,6 @@ namespace ConsultorioWeb.Controllers
                 return RedirectToAction("RegistrarCita", "Registro");
             }
         }
-
-        //
 
         public async Task<dynamic> Convecciones()
         {

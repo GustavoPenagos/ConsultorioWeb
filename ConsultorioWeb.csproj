@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CrudController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListaController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
@@ -201,6 +202,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Buscar\" />
+    <Folder Include="Views\Crud\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

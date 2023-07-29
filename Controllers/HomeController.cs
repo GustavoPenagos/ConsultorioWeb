@@ -47,7 +47,7 @@ namespace ConsultorioWeb.Controllers
             }
         }
 
-        public async Task<dynamic> BuscarUsuario(long id)
+        public async Task<dynamic> BuscarUsuario(long id, string fuente=null)
         {
             try
             {
@@ -57,7 +57,13 @@ namespace ConsultorioWeb.Controllers
                 if (message.IsSuccessStatusCode)
                 {
                     string usuario = await message.Content.ReadAsStringAsync();
-                    return RedirectToAction("Index", "Home", new { usuario = usuario });
+                    switch (fuente)
+                    {
+                        case "editarUsuario":
+                            return usuario;
+                        default:
+                            return RedirectToAction("Index", "Home", new { usuario = usuario });
+                    }                    
                 }
                 else
                 {
@@ -70,21 +76,7 @@ namespace ConsultorioWeb.Controllers
             }
         }
 
-        public async Task<dynamic> EliminarUsuario(long id)
-        {
-            try
-            {
-                HttpClient client = new HttpClient();
-                string apiDelete = api + "/api/eliminar/usuario" + "?id=" + id;
-                HttpResponseMessage message = await client.GetAsync(apiDelete);
-                
-                return RedirectToAction("Index", "Home");
-            }
-            catch (Exception ex)
-            {
-                return ViewBag.ErrorMessage = ex.Message;
-            }
-        }
+        
 
         public async Task<dynamic> BuscarCita(long id = 0)
         {

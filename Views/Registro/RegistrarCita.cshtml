@@ -38,35 +38,30 @@
                 else
                 {
             <tbody>
-                @foreach (var item in ViewBag.Persona)
-                {
-                    <tr>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
-                            </div>
-                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="nombre" value="@item.Nombre" readonly>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
-                            </div>
-                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="nombre" value="@item.Identificacion" readonly>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
-                            </div>
-                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="nombre" value="@item.CitaAnterior" readonly>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
-                            </div>
-                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="nombre" value="Sin Fecha" readonly>
-                        </td>
-                    </tr>
-                }
+                    @foreach (var item in ViewBag.Cita)
+                    {
+                        <tr>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="nombre" value="@item.nombre @item.apellido" readonly>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Identificacion</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Id_Usuario" value="@item.identificacion" readonly>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Ultima cita</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="citaAnterior" value="@item.fechaCita" readonly>
+                            </td>
+                            
+                        </tr>
+                    }
             </tbody>
                 }
                 <tfoot>
