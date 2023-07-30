@@ -198,6 +198,9 @@
     <Content Include="Views\Registro\PlanTratamiento.cshtml" />
     <Content Include="Views\Registro\RegistrarCita.cshtml" />
     <Content Include="Views\Lista\Citas.cshtml" />
+    <Content Include="Views\Registro\RegistroAnamnesis.cshtml" />
+    <Content Include="Views\Registro\RegistroFamiliar.cshtml" />
+    <Content Include="Views\Registro\RegistroEstomatologico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

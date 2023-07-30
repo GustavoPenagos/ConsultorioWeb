@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewBag.Title = "RegistroEstomatologico";
+}
+
+<h2>RegistroEstomatologico</h2>
+<main>
+    @using (Html.BeginForm("InsertarEstomatologico", "Registro", FormMethod.Post))
+    {
+        <div class="container">
+            <article>
+                <header>
+                    <h2>4. EXAMEN ESTOMATOLOGICO</h2>
+                </header>
+                <br />
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">LABIOS</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="labios">
+                                <option value="1">NORMAL</option>
+                                <option value="2">ANORMAL</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">LENGUA</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="lengua">
+                                <option value="1">NORMAL</option>
+                                <option value="2">ANORMAL</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">FRENILLOS</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="frenillos">
+                                <option value="1">NORMAL</option>
+                                <option value="2">ANORMAL</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">ENCIAS</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="encias">
+                                <option value="1">NORMAL</option>
+                                <option value="2">ANORMAL</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">MUSCULOS</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="musculo">
+                                <option value="1">NORMAL</option>
+                                <option value="2">ANORMAL</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">MAXILARES</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="maxilares">
+                                <option value="1">NORMAL</option>
+                                <option value="2">ANORMAL</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">PALADAR</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="paladar">
+                                <option value="1">NORMAL</option>
+                                <option value="2">ANORMAL</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">PISO-BOCA</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="piso_boca">
+                                <option value="1">NORMAL</option>
+                                <option value="2">ANORMAL</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">GLANDULAS SALIVALES</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="glan_saliva">
+                                <option value="1">NORMAL</option>
+                                <option value="2">ANORMAL</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">CARRILLOS</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="carrillos">
+                                <option value="1">NORMAL</option>
+                                <option value="2">ANORMAL</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">OROFARINGE</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="orofaringe">
+                                <option value="1">NORMAL</option>
+                                <option value="2">ANORMAL</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </article>
+
+            @*TIPO DE CARTA DENTAL*@
+
+            <article>
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">CARTA DENTAL</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="carta">
+                                <option value="1">ADULTOS</option>
+                                <option value="2">NIÑOS</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </article>
+        
+        </div>
+    }
+</main>
+

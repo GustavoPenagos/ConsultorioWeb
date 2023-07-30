@@ -13,9 +13,9 @@
 <h1>Registro de usuarios</h1>
 <br />
 <main>
-    <form action="@Url.Action("InsertarCliente","Registro")">
+    @using (Html.BeginForm("InsertarCliente", "Registro", FormMethod.Post))
+    {
         <div class="container">
-            @* INICIO DE LA PARTE 1 DEL FORMULARIO *@
             <article>
                 <header>
                     <h2>1. Datos de identificación</h2>
@@ -26,19 +26,19 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Nombres</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="nombre">
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Nombre" required>
                         </td>
                         <td>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Apellidos</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="apellido">
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Apellido" required>
                         </td>
                         <td>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Tipo identificacion</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="tp_doc">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Id_Documento">
                                 @foreach (var item in ViewBag.Documentos)
                                 {
                                     <option value="@item.Id_Documento">@item.Documento</option>
@@ -49,7 +49,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">N° Documento</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="id_usuario">
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Id_Usuario" required>
                         </td>
                     </tr>
                     <tr>
@@ -57,7 +57,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Estdao civil</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" id="tp_doc" name="civil">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" id="tp_doc" name="Estado_Civil">
                                 @foreach (var item in ViewBag.EstadoCivil)
                                 {
                                     <option value="@item.Id" id="civil">@item.CivilNo</option>
@@ -68,19 +68,19 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Fecha de nacimiento</span>
                             </div>
-                            <input type="date" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="f_nacido">
+                            <input type="date" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Fecha_Nacido" required>
                         </td>
                         <td>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Edad</span>
                             </div>
-                            <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="edad">
+                            <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Edad" required>
                         </td>
                         <td>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Ciudad de nacimiento</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="ciudad" id="buscar">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Id_Ciudad" id="buscar">
                                 @foreach (var item in ViewBag.Ciudades)
                                 {
                                     <option value="@item.Id_Ciudad">@item.Municipio</option>
@@ -93,7 +93,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Sexo</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="sexo">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Id_Genero">
                                 @foreach (var item in ViewBag.Genero)
                                 {
                                     <option value="@item.Id_Genero">@item.Sexo</option>
@@ -104,19 +104,19 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Ocupacion</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="ocupacion">
+                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Ocupacion" >
                         </td>
                         <td>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Aseguradora</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="asegura">
+                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Aseguradora">
                         </td>
                         <td>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Direccion</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="direccion">
+                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Direccion">
                         </td>
                     </tr>
                     <tr>
@@ -124,405 +124,39 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Telefono</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="telefono">
+                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Telefono">
                         </td>
                         <td>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Oficina</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="oficina">
+                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Oficina">
                         </td>
                         <td>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Nombre del acudiente</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="acudiente">
+                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Nombre_Acudiente">
                         </td>
                         <td>
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Referido por:</span>
+                                <span class="input-group-text" id="inputGroup-sizing-default">Referido por</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="referido">
+                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Referido">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Observaciones</span>
+                            </div>
+                            <textarea type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Observaciones"></textarea>
                         </td>
                     </tr>
                 </table>
             </article>
-            @* FIN DE LA PARTE 1 DEL FORMULARIO *@
-            @* INICIO DE LA PARTE 2 DEL FORMULARIO *@
-            <article>
-                <header>
-                    <h2>2. ANAMNESIS</h2>
-                </header>
-                <br />
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Motivo de consulta</span>
-                                </div>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" cols="30" name="MTV_consulta"></textarea>
-                            </td>
-                            <td>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Historial de enfermedad actual</span>
-                                </div>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" cols="30" name="HA_actual"></textarea>
-                            </td>
-                        </tr>
-                    </thead>
-                </table>
-                <table class="table table-striped">
-                    <tbody>
-                    </tbody>
-                </table>
-            </article>
-            @* FIN DE LA PARTE 2 DEL FORMULARIO *@
-            @* INICIO DE LA PARTE 3 DEL FORMULARIO *@
-            <article>
-                <header>
-                    <h2>3. ANTECEDENTES FAMILIARES</h2>
-                </header>
-                <br />
-                <table class="table table-striped">
-                    <tr>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">CANCER</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="cancer">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">SINUSITIS</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="sinusitis">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">ORGANOS-SENTIDOS</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="org_snt">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">DIABETES</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="diabetes">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">INFECCIONES</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="infecciones">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">HEPATITIS</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="hepatitis">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">TRANSTORNOS GASTRICOS</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="trans_gastico">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">CARDIOPATIAS</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="cardiopatias">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">FIEBRE REUMATICA</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="fieb_reumatica">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">TRATAMIENTO MEDICO</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="trat_medico">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">ENFERMEDADES RESPIRATORIAS</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="enf_respira">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">HIPERTENSION</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="hipertension">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">ALTERACIONES COAGULATORIAS</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="alt_coagula">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">TRASTORNOS NEUMOLOGICOS</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="trans_neumolo">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">TENSION ARTERIAL</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="ten_arterial">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">ORTOS</span>
-                            </div>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" cols="100" name="otros"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">EMBARAZO</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="emabrazo">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">MESES</span>
-                            </div>
-                            <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="meses" value="0">
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">LACTANCIA</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="lactancia">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">FRECUENCIA DE CEPILLADO</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="frec_cepilla">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">USO DE SEDA DENTAL</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="ceda">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">OBSERVACIONES</span>
-                            </div>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" cols="100" name="observacion"></textarea>
-                        </td>
-                    </tr>
-                    <tr><td colspan="4"></td></tr>
-                </table>
-            </article>
-            @* FIN DE LA PARTE 3 DEL FORMULARIO *@
-            @* INICIO DE LA PARTE 4 DEL FORMULARIO *@
-            <article>
-                <header>
-                    <h2>4. EXAMEN ESTOMATOLOGICO</h2>
-                </header>
-                <br />
-                <table class="table table-striped">
-                    <tr>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">LABIOS</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="labios">
-                                <option value="1">NORMAL</option>
-                                <option value="2">ANORMAL</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">LENGUA</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="lengua">
-                                <option value="1">NORMAL</option>
-                                <option value="2">ANORMAL</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">FRENILLOS</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="frenillos">
-                                <option value="1">NORMAL</option>
-                                <option value="2">ANORMAL</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">ENCIAS</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="encias">
-                                <option value="1">NORMAL</option>
-                                <option value="2">ANORMAL</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">MUSCULOS</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="musculo">
-                                <option value="1">NORMAL</option>
-                                <option value="2">ANORMAL</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">MAXILARES</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="maxilares">
-                                <option value="1">NORMAL</option>
-                                <option value="2">ANORMAL</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">PALADAR</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="paladar">
-                                <option value="1">NORMAL</option>
-                                <option value="2">ANORMAL</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">PISO-BOCA</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="piso_boca">
-                                <option value="1">NORMAL</option>
-                                <option value="2">ANORMAL</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">GLANDULAS SALIVALES</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="glan_saliva">
-                                <option value="1">NORMAL</option>
-                                <option value="2">ANORMAL</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">CARRILLOS</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="carrillos">
-                                <option value="1">NORMAL</option>
-                                <option value="2">ANORMAL</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">OROFARINGE</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="orofaringe">
-                                <option value="1">NORMAL</option>
-                                <option value="2">ANORMAL</option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-            </article>
-            <article>
-                <table class="table table-striped">
-                    <tr>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">CARTA DENTAL</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="carta">
-                                <option value="1">ADULTOS</option>
-                                <option value="2">NIÑOS</option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-            </article><br />
-            @* FIN DE LA PARTE 4 DEL FOMULARIO *@
-            @* GUARDAR DATOS DEL FORMULARIO *@
+
+
             <table class="table table-striped">
                 <tfoot>
                     <tr>
@@ -533,7 +167,7 @@
                 </tfoot>
             </table>
         </div>
-    </form>
+    }
 </main>
 
 <br />

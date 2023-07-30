@@ -1,4 +1,5 @@
 ﻿using ConsultorioWeb.Models;
+using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
 using OdontologiaWeb.Models;
 using System;
@@ -11,12 +12,17 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.DynamicData;
 using System.Web.Mvc;
+using System.Web.Razor.Generator;
 
 namespace ConsultorioWeb.Controllers
 {
     public class RegistroController : Controller
     {
         public readonly string api = System.Configuration.ConfigurationManager.AppSettings["UrlAPI"];
+        StringContent json;
+        
+        //Start View
+
         public async Task<dynamic> RegistroUsuario(long id=0)
         {
             if(id != 0)
@@ -35,6 +41,20 @@ namespace ConsultorioWeb.Controllers
             ViewBag.Genero = generos;
             return View();
         }
+        public ActionResult RegistroAnamnesis()
+        {
+            ViewBag.Usuario = TempData["Usuario"];
+            ViewBag.idUsuario = TempData["idUsuario"];
+            return View();
+        }
+        public ActionResult RegistroFamiliar()
+        {
+            return View();
+        }
+        public ActionResult RegistroEstomatologico()
+        {
+            return View();
+        }
         public async Task<dynamic> RegistroCartaDental()
         {
             var conv = await Convecciones();
@@ -43,7 +63,7 @@ namespace ConsultorioWeb.Controllers
             ViewBag.idUsuario = TempData["idUsuario"];
             return View();           
         }
-        public async Task<dynamic> PlanTratamiento()
+        public ActionResult PlanTratamiento()
         {
             //ViewBag.Tratamiento = await Tratamiento();
             ViewBag.idUsuario = TempData["idUsuario"];
@@ -65,139 +85,106 @@ namespace ConsultorioWeb.Controllers
                 return View();
             }
         }
+        
+        //End Views
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public async Task<dynamic> InsertarCliente(string nombre, string apellido, int tp_doc, long id_usuario, int civil, DateTime f_nacido,int edad, int sexo, string ocupacion,
-            int ciudad, string asrgura, string direccion, string telefono, string oficina, string acudiente, string referido
-            , string MTV_consulta, string HA_actual,int sinusitis, int org_snt, int infecciones, int hepatitis, int trans_gastico, int cardiopatias, int fieb_reumatica
-            , int trat_medico, int enf_respira, int hipertension, int alt_coagula, int trans_neumolo, int cancer, int diabetes, int ten_arterial, string otros, int emabrazo, int meses, int lactancia, int frec_cepilla, int ceda, string observacion
-            , int labios, int lengua, int frenillos, int encias, int musculo, int maxilares, int paladar, int piso_boca, int glan_saliva, int carrillos, int orofaringe
-            , int carta)
+        public async Task<dynamic> InsertarCliente(Usuario usuario)
         {
-            StringContent json;
+            
             try
             {
-                HttpClient httpClient = new HttpClient();
-                string apiDept = api + "/api/buscar/departamento";
-                HttpResponseMessage message = await httpClient.GetAsync(apiDept + "?id=" + ciudad);
-                string departamento = await message.Content.ReadAsStringAsync();
-                
-                //
-                Usuario usuario = new Usuario
+                HttpClient client = new HttpClient();
+                json = new StringContent(JsonConvert.SerializeObject(usuario));
+                string apiUsuario = api + "/api/registro/usuario";
+                HttpResponseMessage message = await client.PostAsync(apiUsuario, json);
+                if (message.IsSuccessStatusCode)
                 {
-                    Id_Usuario=id_usuario,
-                    Id_Documento = tp_doc,
-                    Nombre = nombre,
-                    Apellido=apellido,
-                    Edad=edad,
-                    Fecha_Nacido=f_nacido,
-                    Estado_Civil=civil,
-                    Ocupacion=ocupacion,
-                    Aseguradora=asrgura,
-                    Direccion=direccion,
-                    Telefono = telefono,
-                    Id_Genero=sexo,
-                    Id_Ciudad=ciudad,
-                    Id_Departamento = Convert.ToInt32(departamento),
-                    Oficina = oficina,
-                    Nombre_Acudiente=acudiente,
-                    Referido=referido,
-                    Observaciones=observacion,  
-                    Atencion = DateTime.Now
-                };
-                json = new StringContent(JsonConvert.SerializeObject(usuario), Encoding.UTF8, "application/json");
-                string apiUser = api + "/registro/usuario";
-
-                
-                HttpResponseMessage responseUser = await httpClient.PostAsync(apiUser, json);
-                if (responseUser.IsSuccessStatusCode)
-                {
-                    Anamnesis anamnesis = new Anamnesis
-                    {
-                        Id_Usuario = id_usuario,
-                        Motivo_Consulta = MTV_consulta,
-                        Emf_Actual = HA_actual,
-                    };
-
-                    json = new StringContent(JsonConvert.SerializeObject(anamnesis), Encoding.UTF8, "application/json");
-                    string apiAnam = api + "/registro/anamnesis";
-                    HttpResponseMessage responseAnam = await httpClient.PostAsync(apiAnam, json);
-                    if(responseAnam.IsSuccessStatusCode) 
-                    {
-                        Ant_Familiar familiar = new Ant_Familiar
-                        {
-                            Id_Usuario = id_usuario,
-                            Cancer = cancer,
-                            Sinusitis = sinusitis,
-                            Organos_Sentidos = org_snt,
-                            Diabetes = diabetes,
-                            Infecciones = infecciones,
-                            Hepatitis = hepatitis,
-                            Trans_Gastricos = trans_gastico,
-                            Cardiopatias = cardiopatias,
-                            Fieb_Reumatica = fieb_reumatica,
-                            Trata_Medico = trat_medico,
-                            Enf_Respiratoria = enf_respira,
-                            Hipertension = hipertension,
-                            Alt_Coagulatorias = alt_coagula,
-                            Trans_Neumologico = trans_neumolo,
-                            Ten_Arterial = ten_arterial,
-                            Otros = otros,
-                            Embarazo = emabrazo,
-                            Meses = meses,
-                            Lactancia = lactancia,
-                            Fre_Cepillado = frec_cepilla,
-                            Ceda_Dental = ceda,
-                            Observaciones = observacion,
-                            Atencion = DateTime.Now
-                        };
-
-                        json = new StringContent(JsonConvert.SerializeObject(familiar), Encoding.UTF8, "application/json");
-                        string apiFam = api + "/registro/familiar";
-                        HttpResponseMessage responseFam = await httpClient.PostAsync(apiFam, json);
-                        if (responseFam.IsSuccessStatusCode)
-                        {
-                            Estomatologico estomatologico = new Estomatologico
-                            {
-                                Id_Usuario = id_usuario,
-                                Labios = labios,
-                                Encias = encias,
-                                Paladar = paladar,
-                                Carrillos = carrillos,
-                                Lengua = lengua,
-                                Musculos = musculo,
-                                Piso_Boca = piso_boca,
-                                Orofarige = orofaringe,
-                                Frenillos = frenillos,
-                                Maxilares = maxilares,
-                                Glan_Salivales = glan_saliva,
-                                Atencion = DateTime.Now
-                            };
-
-                            json = new StringContent(JsonConvert.SerializeObject(familiar), Encoding.UTF8, "application/json");
-                            string apiEst = api + "/registro/estomatologico";
-                            HttpResponseMessage responseEst = await httpClient.PostAsync(apiEst, json);
-                            if (responseEst.IsSuccessStatusCode)
-                            {
-                                TempData["carta"] = carta;
-                                TempData["idUsuario"] = id_usuario;
-                                return RedirectToAction("RegistroCartaDental", "Registro");
-                            }
-                            
-                        }
-                        
-                    }
-                    
+                    return RedirectToAction("RegistroAnamnesis", "Registro");
                 }
-                return RedirectToAction("RegistroUsuario", "Registro", usuario);
+                else
+                {
+                    TempData["Usuario"] = usuario.Nombre;
+                    TempData["idUsuario"] = usuario.Id_Usuario;
+                    ViewBag.Menssage = "Error al guardar datos del paciente";
+                    return RedirectToAction("RegistroUsuario", "Registro");
+                }
 
             }
             catch (Exception ex)
             {
-                return RedirectToAction("RegistroUsuario","Registro");
+                return ViewBag.Error = "Error al guardar datos del paciente" + "\n" + ex.Message;
+            }
+        }
+
+        public async Task<dynamic> InsertarAnamnesis(Anamnesis anamnesis)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                json = new StringContent(JsonConvert.SerializeObject(anamnesis), Encoding.UTF8, "application/json");
+                string apiAnamnesis = api + "/api/registro/anamnesis";
+                HttpResponseMessage message = await client.PostAsync(apiAnamnesis, json);
+                if(message.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("", "Registro");
+                }
+                else
+                {
+                    ViewBag.Menssage = "Error al guardar Anamnesis";
+                    return RedirectToAction("RegistroAnamnesis", "Registro");
+                }
+            }
+            catch (Exception ex)
+            {
+                return ViewBag.Errors = "Error al guardar Anamnesis" + "\n" + ex.Message;
+            }
+        }
+
+        public async Task<dynamic> InsertarFamiliar(Ant_Familiar familiar)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                json = new StringContent(JsonConvert.SerializeObject(familiar), Encoding.UTF8, "application/json");
+                string apiFamiliar= api + "/api/registro/familiar";
+                HttpResponseMessage message = await client.PostAsync(apiFamiliar, json);
+                if (message.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("", "Registro");
+                }
+                else
+                {
+                    ViewBag.Menssage = "Error al guardar el Antecedentes familiares";
+                    return RedirectToAction("RegistroAnamnesis", "Registro");
+                }
+            }
+            catch (Exception ex)
+            {
+                return ViewBag.Errors = "Error al guardar el Antecedentes familiares" + "\n" + ex.Message;
+            }
+        }
+
+        public async Task<dynamic> InsertarEstomatologico(Estomatologico estomatologico)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                json = new StringContent(JsonConvert.SerializeObject(estomatologico), Encoding.UTF8, "application/json");
+                string apiEstomatologico = api + "/api/registro/estomatologico";
+                HttpResponseMessage message = await client.PostAsync(apiEstomatologico, json);
+                if (message.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("RegistroCartaDental", "Registro");
+                }
+                else
+                {
+                    ViewBag.Menssage = "Error al guardar el examen estomatologico";
+                    return RedirectToAction("RegristroEstomatologico", "Registro");
+                }
+            }
+            catch (Exception ex)
+            {
+                return ViewBag.Errors = "Error al guardar el examen estomatologico" + "\n" + ex.Message;
             }
         }
 

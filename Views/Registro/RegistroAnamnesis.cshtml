@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "RegistroAnamnesis";
+}
+
+<h2>RegistroAnamnesis</h2>
+
+<main>
+    @using (Html.BeginForm("InsertarAnamnesis", "Registro", FormMethod.Post))
+    {
+        <div class="container">
+            <article>
+                <header>
+                    <h2>2. ANAMNESIS de <input type="text" value="ViewBag.idUsuario" placeholder="@ViewBag.Usuario" readonly/></h2>
+                </header>
+                <br />
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Motivo de consulta</span>
+                                </div>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" cols="30" name="MTV_consulta"></textarea>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Historial de enfermedad actual</span>
+                                </div>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" cols="30" name="HA_actual"></textarea>
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+                <table class="table table-striped">
+                    <tbody>
+                    </tbody>
+                </table>
+            </article>
+
+            <table class="table table-striped">
+                <tfoot>
+                    <tr>
+                        <td colspan="2">
+                            <center><button type="submit" class="btn btn-primary" style="width:50%; ">Siguiente</button></center>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    }
+</main>

@@ -1,0 +1,235 @@
+﻿
+@{
+    ViewBag.Title = "RegistroFamiliar";
+}
+
+<h2>RegistroFamiliar</h2>
+
+<main>
+    @using (Html.BeginForm("InsertarFamiliar", "Registro", FormMethod.Post))
+    {
+        <div class="container">
+            <article>
+                <header>
+                    <h2>3. ANTECEDENTES FAMILIARES</h2>
+                </header>
+                <br />
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">CANCER</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="cancer">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">SINUSITIS</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="sinusitis">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">ORGANOS-SENTIDOS</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="org_snt">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">DIABETES</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="diabetes">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">INFECCIONES</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="infecciones">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">HEPATITIS</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="hepatitis">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">TRANSTORNOS GASTRICOS</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="trans_gastico">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">CARDIOPATIAS</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="cardiopatias">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">FIEBRE REUMATICA</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="fieb_reumatica">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">TRATAMIENTO MEDICO</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="trat_medico">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">ENFERMEDADES RESPIRATORIAS</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="enf_respira">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">HIPERTENSION</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="hipertension">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">ALTERACIONES COAGULATORIAS</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="alt_coagula">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">TRASTORNOS NEUMOLOGICOS</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="trans_neumolo">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">TENSION ARTERIAL</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="ten_arterial">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">ORTOS</span>
+                            </div>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" cols="100" name="otros"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">EMBARAZO</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="emabrazo">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">MESES</span>
+                            </div>
+                            <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="meses" value="0">
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">LACTANCIA</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="lactancia">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">FRECUENCIA DE CEPILLADO</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="frec_cepilla">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">USO DE SEDA DENTAL</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="ceda">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">OBSERVACIONES</span>
+                            </div>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" cols="100" name="observacion"></textarea>
+                        </td>
+                    </tr>
+                    <tr><td colspan="4"></td></tr>
+                </table>
+            </article>
+
+            <table class="table table-striped">
+                <tfoot>
+                    <tr>
+                        <td colspan="2">
+                            <center><button type="submit" class="btn btn-primary" style="width:50%; ">Siguiente</button></center>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    }
+</main>
+
