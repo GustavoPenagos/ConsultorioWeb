@@ -5,14 +5,13 @@
 }
 
 <main>
-    @if (ViewBag.Carta == 2)
+    @if (ViewBag.Carta <18)
     {
         <h2>Carta Dental Niños</h2>
         <br />
         using (Html.BeginForm("InsertarCartaDentalNino", "Registro", FormMethod.Post))
         {
             <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="@ViewBag.idUsuario" name="Id_Usuario" readonly />
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="@date.ToString("dd/MM/yyyy")" name="Atencion" readonly />
             <br />
             <div class="container">
                 <article>
@@ -264,14 +263,13 @@
             </table>
         }
     }
-    else if (ViewBag.Carta == 1)
+    else if (ViewBag.Carta >= 18)
     {
         <h2>Carta Dental Adultos</h2>
         <br />
         using (Html.BeginForm("InsertarCartaDentalAdulto", "Registro", FormMethod.Post))
         {
             <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="@ViewBag.idUsuario" name="Id_Usuario" readonly />
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="@date.ToString("dd/MM/yyyy")" name="Atencion" readonly />
             <br />
             <div class="container">
                 <article>

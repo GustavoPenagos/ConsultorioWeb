@@ -6,10 +6,9 @@
 
 <h2>Plan Del Tratamiento</h2>
 <main>
-    @using (Html.BeginForm("InsertarTratamiento", "Registro", FormMethod.Post))
+    @using (Html.BeginForm("InsertarTratamiento", "Tratamiento", FormMethod.Post))
     {
-        <input class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="@ViewBag.idUsuario" name="idUsuario" type="text" readonly />
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="@date.ToString("dd/MM/yyyy")" name="Atencion" readonly />
+        <input value="@ViewBag.idUsuario" name="idUsuario" type="text" hidden readonly />
         <br />
         <div class="container">
             <article>

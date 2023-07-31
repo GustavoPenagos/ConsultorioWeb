@@ -22,6 +22,7 @@ namespace ConsultorioWeb.Controllers
         StringContent json;
         
         //Start View
+        //initial register
 
         public async Task<dynamic> RegistroUsuario(long id=0)
         {
@@ -43,33 +44,32 @@ namespace ConsultorioWeb.Controllers
         }
         public ActionResult RegistroAnamnesis()
         {
-            ViewBag.Usuario = TempData["Usuario"];
-            ViewBag.idUsuario = TempData["idUsuario"];
+            ViewBag.idUsuario = TempData["id"];
             return View();
         }
         public ActionResult RegistroFamiliar()
         {
+            ViewBag.idUsuario = TempData["id"];
             return View();
         }
         public ActionResult RegistroEstomatologico()
         {
+            ViewBag.idUsuario = TempData["id"];
             return View();
         }
         public async Task<dynamic> RegistroCartaDental()
         {
+            
             var conv = await Convecciones();
-            ViewBag.Carta = TempData["carta"];
-            ViewBag.Convecciones = conv; 
-            ViewBag.idUsuario = TempData["idUsuario"];
-            return View();           
-        }
-        public ActionResult PlanTratamiento()
-        {
-            //ViewBag.Tratamiento = await Tratamiento();
-            ViewBag.idUsuario = TempData["idUsuario"];
+            ViewBag.Carta = Convert.ToInt32(await new HomeController().BuscarUsuario(Convert.ToInt32(TempData["id"]), "registro"));
+            ViewBag.Convecciones = conv;
+            ViewBag.idUsuario = TempData["id"];
             return View();
         }
-        public async Task<dynamic> RegistrarCita(long id, string nombre="")
+        
+        //dates
+
+        public async Task<dynamic> RegistrarCita(long id, string nombre = "")
         {
             var cita = await new HomeController().BuscarCita(id);
             if (cita == "[]")
@@ -86,25 +86,31 @@ namespace ConsultorioWeb.Controllers
             }
         }
         
+        //dates
         //End Views
 
         public async Task<dynamic> InsertarCliente(Usuario usuario)
         {
-            
+            HttpClient client = new HttpClient();
             try
             {
-                HttpClient client = new HttpClient();
-                json = new StringContent(JsonConvert.SerializeObject(usuario));
+                string apiDept = api + "/api/buscar/departamento";
+                HttpResponseMessage message1 = await client.GetAsync(apiDept + "?id=" + usuario.Id_Ciudad);
+                string departamento = await message1.Content.ReadAsStringAsync();
+                
+                usuario.Id_Departamento = Convert.ToInt32(departamento);
+
+                json = new StringContent(JsonConvert.SerializeObject(usuario), Encoding.UTF8, "application/json");
                 string apiUsuario = api + "/api/registro/usuario";
                 HttpResponseMessage message = await client.PostAsync(apiUsuario, json);
                 if (message.IsSuccessStatusCode)
                 {
+                    TempData["nombre"]= usuario.Nombre;
+                    TempData["id"]= usuario.Id_Usuario;
                     return RedirectToAction("RegistroAnamnesis", "Registro");
                 }
                 else
                 {
-                    TempData["Usuario"] = usuario.Nombre;
-                    TempData["idUsuario"] = usuario.Id_Usuario;
                     ViewBag.Menssage = "Error al guardar datos del paciente";
                     return RedirectToAction("RegistroUsuario", "Registro");
                 }
@@ -126,7 +132,8 @@ namespace ConsultorioWeb.Controllers
                 HttpResponseMessage message = await client.PostAsync(apiAnamnesis, json);
                 if(message.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("", "Registro");
+                    TempData["id"] = anamnesis.Id_Usuario;
+                    return RedirectToAction("RegistroFamiliar", "Registro");
                 }
                 else
                 {
@@ -150,12 +157,13 @@ namespace ConsultorioWeb.Controllers
                 HttpResponseMessage message = await client.PostAsync(apiFamiliar, json);
                 if (message.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("", "Registro");
+                    TempData["id"] = familiar.Id_Usuario;
+                    return RedirectToAction("RegistroEstomatologico", "Registro");
                 }
                 else
                 {
                     ViewBag.Menssage = "Error al guardar el Antecedentes familiares";
-                    return RedirectToAction("RegistroAnamnesis", "Registro");
+                    return RedirectToAction("RegistroFamiliar", "Registro");
                 }
             }
             catch (Exception ex)
@@ -174,6 +182,7 @@ namespace ConsultorioWeb.Controllers
                 HttpResponseMessage message = await client.PostAsync(apiEstomatologico, json);
                 if (message.IsSuccessStatusCode)
                 {
+                    TempData["id"] = estomatologico.Id_Usuario;
                     return RedirectToAction("RegistroCartaDental", "Registro");
                 }
                 else
@@ -188,65 +197,6 @@ namespace ConsultorioWeb.Controllers
             }
         }
 
-        public async Task<dynamic> InsertarTratamiento(List<DateTime> fecha, List<string> diente, List<string> tratamiento, List<string> doctor, List<string> firma
-            , string diagnostico, string pronostico, string tratamientos, long idUsuario)
-        {
-            StringContent json;
-            try
-            {
-                PlanTratamiento planTratamiento = new PlanTratamiento
-                {
-                    Id_Usuario = idUsuario,
-                    Diagnostico = diagnostico,
-                    Pronostico = pronostico,
-                    Tratamiento = tratamientos,
-                    Atencion = DateTime.Now
-                };
-                HttpClient client = new HttpClient();
-
-                json = new StringContent(JsonConvert.SerializeObject(planTratamiento), Encoding.UTF8, "application/json");
-                string apiTrata = api + "/registro/plantratamiento";
-                HttpResponseMessage responseUser = await client.PostAsync(apiTrata, json);
-
-                if (responseUser.IsSuccessStatusCode)
-                {
-                    for (int i = 0; i < fecha.Count; i++)
-                    {
-                        EstadoTratamiento estado = new EstadoTratamiento
-                        {
-                            Id_Usuario = idUsuario,
-                            Fecha = fecha[i],
-                            Diente = diente[i],
-                            Trata_Efectuado = tratamiento[i],
-                            Doctor = doctor[i],
-                            Firma = firma[i]
-                        };
-                        json = new StringContent(JsonConvert.SerializeObject(estado), Encoding.UTF8, "application/json");
-                        string apiEstado = api + "/registro/estadotratamiento";
-                        HttpResponseMessage responseEstado = await client.PostAsync(apiEstado, json);
-
-                        if (responseEstado.IsSuccessStatusCode)
-                        {
-                        }
-                        else
-                        {
-                            return RedirectToAction("PlanTratamiento", "Registro");
-                        }
-
-                    }
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    return RedirectToAction("PlanTratamiento", "Registro");
-                }
-            }
-            catch(Exception ex)
-            {
-                return RedirectToAction("PlanTratamiento", "Registro");
-            }
-        }
-
         public async Task<dynamic> InsertarCartaDentalAdulto(CartaDentalAdulto dentalAdulto)
         {
             try
@@ -254,12 +204,11 @@ namespace ConsultorioWeb.Controllers
                 var json = new StringContent(JsonConvert.SerializeObject(dentalAdulto), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
 
-                string apiDental = api + "/registro/dentaladulto";
+                string apiDental = api + "/api/registro/dentaladulto";
                 HttpResponseMessage message = await client.PostAsync(apiDental, json);
                 if (message.IsSuccessStatusCode)
                 {
-                    TempData["idUsuario"] = dentalAdulto.Id_Usuario;
-                    return RedirectToAction("PlanTratamiento", "Registro");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -279,12 +228,11 @@ namespace ConsultorioWeb.Controllers
                 var json = new StringContent(JsonConvert.SerializeObject(dentalNino), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
 
-                string apiDental = api + "/registro/dentalnino";
+                string apiDental = api + "/api/registro/dentalnino";
                 HttpResponseMessage message = await client.PostAsync(apiDental, json);
                 if (message.IsSuccessStatusCode)
                 {
-                    TempData["idUsuario"] = dentalNino.Id_Usuario;
-                    return RedirectToAction("PlanTratamiento", "Registro");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -296,6 +244,8 @@ namespace ConsultorioWeb.Controllers
                 return RedirectToAction("RegistroCartaDental", "Registro");
             }
         }
+
+        //dates
 
         public async Task<dynamic> InsertarCita(Citas citas)
         {
@@ -327,6 +277,9 @@ namespace ConsultorioWeb.Controllers
                 return RedirectToAction("RegistrarCita", "Registro");
             }
         }
+        
+        //dates
+        //aditional <select> data 
 
         public async Task<dynamic> Convecciones()
         {
@@ -442,6 +395,8 @@ namespace ConsultorioWeb.Controllers
             }
             return "";
         }
+
+        //aditional <select> data 
 
     }
 }

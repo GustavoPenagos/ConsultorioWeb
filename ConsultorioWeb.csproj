@@ -124,6 +124,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListaController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
+    <Compile Include="Controllers\TratamientoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,17 +196,16 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Registro\RegistroUsuario.cshtml" />
     <Content Include="Views\Registro\RegistroCartaDental.cshtml" />
-    <Content Include="Views\Registro\PlanTratamiento.cshtml" />
+    <Content Include="Views\Tratamiento\PlanTratamiento.cshtml" />
     <Content Include="Views\Registro\RegistrarCita.cshtml" />
     <Content Include="Views\Lista\Citas.cshtml" />
     <Content Include="Views\Registro\RegistroAnamnesis.cshtml" />
     <Content Include="Views\Registro\RegistroFamiliar.cshtml" />
     <Content Include="Views\Registro\RegistroEstomatologico.cshtml" />
+    <Content Include="Views\Tratamiento\CartaDental.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Buscar\" />
-    <Folder Include="Views\Crud\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

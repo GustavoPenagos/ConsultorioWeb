@@ -27,11 +27,11 @@
                             <td>@item.genero</td>
                             <td>@item.municipio</td>
                             <td>@item.departamento </td>
-                            @*<td>
+                            <td>
                                 <a href="@Url.Action("RegistroUsuario","Registro", new {id = item.id_Usuario})">
                                     <img src="~/Content/Images/Edit.svg" />
                                 </a>
-                            </td>*@
+                            </td>
                             <td>
                                 <a href="@Url.Action("EliminarUsuario","Crud", new {id = item.id_Usuario})">
                                     <img src="~/Content/Images/Delete.svg" />
@@ -40,6 +40,11 @@
                             <td>
                                 <a href="@Url.Action("RegistrarCita","Registro", new {id = item.id_Usuario, nombre = item.nombre, })">
                                     <img src="~/Content/Images/addDate.svg" />
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("PlanTratamiento","Tratamiento", new {id = item.id_Usuario})">
+                                    <img src="~/Content/Images/tratamiento.svg" />
                                 </a>
                             </td>
                         </tr>

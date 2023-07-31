@@ -1,5 +1,6 @@
 ﻿using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using OdontologiaWeb.Models;
 using System;
 using System.Collections.Generic;
@@ -52,7 +53,7 @@ namespace ConsultorioWeb.Controllers
             try
             {
                 HttpClient client = new HttpClient();
-                string apiBuscar = api + "/api/buscar/usuario" + "?id= " + id;
+                string apiBuscar = api + "/api/buscar/usuario" + "?id= " + id + "&fuente=" + fuente;
                 HttpResponseMessage message = await client.GetAsync(apiBuscar);
                 if (message.IsSuccessStatusCode)
                 {
@@ -60,6 +61,9 @@ namespace ConsultorioWeb.Controllers
                     switch (fuente)
                     {
                         case "editarUsuario":
+                            return usuario;
+                        case "registro":
+                            
                             return usuario;
                         default:
                             return RedirectToAction("Index", "Home", new { usuario = usuario });

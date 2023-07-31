@@ -11,6 +11,7 @@
             <article>
                 <header>
                     <h2>4. EXAMEN ESTOMATOLOGICO</h2>
+                    <input type="text" value="@ViewBag.idUsuario" name="Id_Usuario" hidden readonly />
                 </header>
                 <br />
                 <table class="table table-striped">
@@ -123,25 +124,16 @@
                     </tr>
                 </table>
             </article>
-
-            @*TIPO DE CARTA DENTAL*@
-
-            <article>
-                <table class="table table-striped">
+            <table class="table table-striped">
+                <tfoot>
                     <tr>
-                        <td>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">CARTA DENTAL</span>
-                            </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="carta">
-                                <option value="1">ADULTOS</option>
-                                <option value="2">NIÑOS</option>
-                            </select>
+                        <td colspan="2">
+                            <center><button type="submit" class="btn btn-primary" style="width:50%; ">Siguiente</button></center>
                         </td>
                     </tr>
-                </table>
-            </article>
-        
+                </tfoot>
+            </table>
+
         </div>
     }
 </main>
