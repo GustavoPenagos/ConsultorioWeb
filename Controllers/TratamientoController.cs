@@ -22,10 +22,9 @@ namespace ConsultorioWeb.Controllers
             return View();
         }
 
-        public async Task<dynamic> InsertarTratamiento(List<DateTime> fecha, List<string> diente, List<string> tratamiento, List<string> doctor, List<string> firma
-            , string diagnostico, string pronostico, string tratamientos, long idUsuario)
+        public async Task<dynamic> InsertarTratamiento(List<DateTime> fecha, List<string> diente, List<string> tratamiento
+            , List<string> doctor, List<string> firma, string diagnostico, string pronostico, string tratamientos, long idUsuario)
         {
-            StringContent json;
             try
             {
                 PlanTratamiento planTratamiento = new PlanTratamiento
