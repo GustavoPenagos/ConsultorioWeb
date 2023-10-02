@@ -7,26 +7,32 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <td>N° Documento</td>
                     <td>Tipo Documento</td>
+                    <td>N° Documento</td>
                     <td>Nombre</td>
                     <td>Edad</td>
                     <td>Sexo</td>
-                    <td>Ciudad</td>
-                    <td>Departamento</td>
+                    <td>Fecha cita</td>
+                    <td>Hora cita</td>
                 </tr>
             </thead>
             <tbody>
                     @foreach (var item in ViewBag.Usuario)
                     {
                         <tr>
-                            <td>@item.id_Usuario</td>
                             <td>@item.tipodocumento</td>
-                            <td>@item.nombre @item.apellido </td>
+                            <td>@item.id_Usuario</td>
+                            <td>
+                                <a href="@Url.Action("Historial","Lista", new {id = item.id_Usuario})" class="text-decoration-none">
+                                    <p class="text-black">
+                                        @item.nombre @item.apellido
+                                    </p>
+                                </a>
+                            </td>
                             <td>@item.edad </td>
                             <td>@item.genero</td>
-                            <td>@item.municipio</td>
-                            <td>@item.departamento </td>
+                            <td>@item.citas</td>
+                            <td>@item.hora</td>
                             <td>
                                 <a href="@Url.Action("RegistroUsuario","Registro", new {id = item.id_Usuario})">
                                     <img src="~/Content/Images/Edit.svg" />

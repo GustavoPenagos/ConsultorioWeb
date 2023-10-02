@@ -15,12 +15,12 @@ namespace ConsultorioWeb.Controllers
     public class HomeController : Controller
     {
         public readonly string  api = System.Configuration.ConfigurationManager.AppSettings["UrlAPI"];
-        public async Task<dynamic> Index(string usuario=null)
+        public async Task<dynamic> Index(string usuario=null, bool caso = false)
         {
             try
             {
                 HttpClient client = new HttpClient();
-                HttpResponseMessage httpResponse = await client.GetAsync(api + "/api/lista/pacientes");
+                HttpResponseMessage httpResponse = await client.GetAsync(api + "/lista/pacientes");
                 if (httpResponse.IsSuccessStatusCode)
                 {
                     if (usuario != null)
@@ -32,6 +32,10 @@ namespace ConsultorioWeb.Controllers
                     {
                         string response = await httpResponse.Content.ReadAsStringAsync();
                         ViewBag.Usuario = JsonConvert.DeserializeObject(response);
+                        if(caso == true)
+                        {
+                            return response;
+                        }
                         return View();
                     }
 
@@ -53,7 +57,7 @@ namespace ConsultorioWeb.Controllers
             try
             {
                 HttpClient client = new HttpClient();
-                string apiBuscar = api + "/api/buscar/usuario" + "?id= " + id + "&fuente=" + fuente;
+                string apiBuscar = api + "/buscar/usuario" + "?id= " + id + "&fuente=" + fuente;
                 HttpResponseMessage message = await client.GetAsync(apiBuscar);
                 if (message.IsSuccessStatusCode)
                 {
@@ -87,7 +91,7 @@ namespace ConsultorioWeb.Controllers
             try
             {
                 HttpClient client = new HttpClient();
-                string apiCita = api + "/api/buscar/citaxid" + "?id=" + id;
+                string apiCita = api + "/buscar/citaxid" + "?id=" + id;
                 HttpResponseMessage message = await client.GetAsync(apiCita);
                 if(message.IsSuccessStatusCode)
                 {

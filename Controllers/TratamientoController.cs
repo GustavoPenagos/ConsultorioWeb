@@ -38,7 +38,7 @@ namespace ConsultorioWeb.Controllers
                 HttpClient client = new HttpClient();
 
                 json = new StringContent(JsonConvert.SerializeObject(planTratamiento), Encoding.UTF8, "application/json");
-                string apiTrata = api + "/api/registro/plantratamiento";
+                string apiTrata = api + "/registro/plantratamiento";
                 HttpResponseMessage responseUser = await client.PostAsync(apiTrata, json);
 
                 if (responseUser.IsSuccessStatusCode)
@@ -55,7 +55,7 @@ namespace ConsultorioWeb.Controllers
                             Firma = firma[i]
                         };
                         json = new StringContent(JsonConvert.SerializeObject(estado), Encoding.UTF8, "application/json");
-                        string apiEstado = api + "/api/registro/estadotratamiento";
+                        string apiEstado = api + "/registro/estadotratamiento";
                         HttpResponseMessage responseEstado = await client.PostAsync(apiEstado, json);
 
                         if (responseEstado.IsSuccessStatusCode)

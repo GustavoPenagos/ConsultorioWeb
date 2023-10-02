@@ -140,6 +140,7 @@
     <Compile Include="Models\EstadoTratamiento.cs" />
     <Compile Include="Models\Estomatologico.cs" />
     <Compile Include="Models\Genero.cs" />
+    <Compile Include="Models\Imagenes.cs" />
     <Compile Include="Models\PlanTratamiento.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -203,9 +204,13 @@
     <Content Include="Views\Registro\RegistroFamiliar.cshtml" />
     <Content Include="Views\Registro\RegistroEstomatologico.cshtml" />
     <Content Include="Views\Tratamiento\CartaDental.cshtml" />
+    <Content Include="Views\Lista\Historial.cshtml" />
+    <Content Include="Views\Registro\CargarImagen.cshtml" />
+    <Content Include="Views\Lista\Fotos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Imagen\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

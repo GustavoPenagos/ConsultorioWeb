@@ -4,6 +4,8 @@ using Newtonsoft.Json;
 using OdontologiaWeb.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
@@ -20,7 +22,8 @@ namespace ConsultorioWeb.Controllers
     {
         public readonly string api = System.Configuration.ConfigurationManager.AppSettings["UrlAPI"];
         StringContent json;
-        
+        private string path;
+
         //Start View
         //initial register
 
@@ -55,6 +58,16 @@ namespace ConsultorioWeb.Controllers
         public ActionResult RegistroEstomatologico()
         {
             ViewBag.idUsuario = TempData["id"];
+            return View();
+        }
+        public async Task<dynamic> CargarImagen()
+        {
+            var usuarios = await new HomeController().Index(null, true);
+            if(usuarios == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.Usuario = JsonConvert.DeserializeObject(usuarios);
             return View();
         }
         public async Task<dynamic> RegistroCartaDental()
@@ -94,14 +107,14 @@ namespace ConsultorioWeb.Controllers
             HttpClient client = new HttpClient();
             try
             {
-                string apiDept = api + "/api/buscar/departamento";
+                string apiDept = api + "/buscar/departamento";
                 HttpResponseMessage message1 = await client.GetAsync(apiDept + "?id=" + usuario.Id_Ciudad);
                 string departamento = await message1.Content.ReadAsStringAsync();
                 
                 usuario.Id_Departamento = Convert.ToInt32(departamento);
 
                 json = new StringContent(JsonConvert.SerializeObject(usuario), Encoding.UTF8, "application/json");
-                string apiUsuario = api + "/api/registro/usuario";
+                string apiUsuario = api + "/registro/usuario";
                 HttpResponseMessage message = await client.PostAsync(apiUsuario, json);
                 if (message.IsSuccessStatusCode)
                 {
@@ -128,7 +141,7 @@ namespace ConsultorioWeb.Controllers
             {
                 HttpClient client = new HttpClient();
                 json = new StringContent(JsonConvert.SerializeObject(anamnesis), Encoding.UTF8, "application/json");
-                string apiAnamnesis = api + "/api/registro/anamnesis";
+                string apiAnamnesis = api + "/registro/anamnesis";
                 HttpResponseMessage message = await client.PostAsync(apiAnamnesis, json);
                 if(message.IsSuccessStatusCode)
                 {
@@ -153,7 +166,7 @@ namespace ConsultorioWeb.Controllers
             {
                 HttpClient client = new HttpClient();
                 json = new StringContent(JsonConvert.SerializeObject(familiar), Encoding.UTF8, "application/json");
-                string apiFamiliar= api + "/api/registro/familiar";
+                string apiFamiliar= api + "/registro/familiar";
                 HttpResponseMessage message = await client.PostAsync(apiFamiliar, json);
                 if (message.IsSuccessStatusCode)
                 {
@@ -178,7 +191,7 @@ namespace ConsultorioWeb.Controllers
             {
                 HttpClient client = new HttpClient();
                 json = new StringContent(JsonConvert.SerializeObject(estomatologico), Encoding.UTF8, "application/json");
-                string apiEstomatologico = api + "/api/registro/estomatologico";
+                string apiEstomatologico = api + "/registro/estomatologico";
                 HttpResponseMessage message = await client.PostAsync(apiEstomatologico, json);
                 if (message.IsSuccessStatusCode)
                 {
@@ -204,7 +217,7 @@ namespace ConsultorioWeb.Controllers
                 var json = new StringContent(JsonConvert.SerializeObject(dentalAdulto), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
 
-                string apiDental = api + "/api/registro/dentaladulto";
+                string apiDental = api + "/registro/dentaladulto";
                 HttpResponseMessage message = await client.PostAsync(apiDental, json);
                 if (message.IsSuccessStatusCode)
                 {
@@ -228,7 +241,7 @@ namespace ConsultorioWeb.Controllers
                 var json = new StringContent(JsonConvert.SerializeObject(dentalNino), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
 
-                string apiDental = api + "/api/registro/dentalnino";
+                string apiDental = api + "/registro/dentalnino";
                 HttpResponseMessage message = await client.PostAsync(apiDental, json);
                 if (message.IsSuccessStatusCode)
                 {
@@ -286,7 +299,7 @@ namespace ConsultorioWeb.Controllers
             try
             {
                 HttpClient client = new HttpClient();
-                string apiConv = api + "/api/lista/conveccion";
+                string apiConv = api + "/lista/conveccion";
                 HttpResponseMessage message = await client.GetAsync(apiConv);
                 if(message.IsSuccessStatusCode)
                 {
@@ -305,7 +318,7 @@ namespace ConsultorioWeb.Controllers
             try
             {
                 HttpClient client = new HttpClient();
-                string EC = api + "/api/lista/estadocivil";
+                string EC = api + "/lista/estadocivil";
                 HttpResponseMessage message = await client.GetAsync(EC);
                 if(message.IsSuccessStatusCode)
                 {
@@ -324,7 +337,7 @@ namespace ConsultorioWeb.Controllers
             try
             {
                 HttpClient client = new HttpClient();
-                string apiTD = api + "/api/lista/tiposdecumentos";
+                string apiTD = api + "/lista/tiposdecumentos";
                 HttpResponseMessage message = await client.GetAsync(apiTD); 
                 if(message.IsSuccessStatusCode) 
                 {
@@ -343,7 +356,7 @@ namespace ConsultorioWeb.Controllers
             try
             {
                 HttpClient client = new HttpClient();
-                string apiCiud = api + "/api/lista/ciudad";
+                string apiCiud = api + "/lista/ciudad";
                 HttpResponseMessage message = await client.GetAsync(apiCiud);
                 if( message.IsSuccessStatusCode)
                 {
@@ -362,7 +375,7 @@ namespace ConsultorioWeb.Controllers
             try
             {
                 HttpClient client = new HttpClient();
-                string apiGenero = api + "/api/lista/genero";
+                string apiGenero = api + "/lista/genero";
                 HttpResponseMessage message = await client.GetAsync(apiGenero);
                 if(message.IsSuccessStatusCode)
                 {
@@ -381,7 +394,7 @@ namespace ConsultorioWeb.Controllers
             try
             {
                 HttpClient client = new HttpClient();
-                string apiTrata = api + "/api/lista/estadotratamiento";
+                string apiTrata = api + "/lista/estadotratamiento";
                 HttpResponseMessage message = await client.GetAsync(apiTrata);
                 if( message.IsSuccessStatusCode)
                 {
@@ -396,7 +409,31 @@ namespace ConsultorioWeb.Controllers
             return "";
         }
 
-        //aditional <select> data 
+        public async Task<dynamic> AgregarFotos(Imagenes imagenes, HttpPostedFileBase imgFile)
+        {
+            try
+            {
+                var fileName = Path.GetFileName(imgFile.FileName);
+                path = Path.Combine(Server.MapPath("/Content/Imagen/"),fileName);
+                string path2 = ("/Content/Imagen/") + fileName;
+                imgFile.SaveAs(path);
+                imagenes.Imagen = path2.Replace(@"\", "/");
+
+                HttpClient client = new HttpClient();
+                json = new StringContent(JsonConvert.SerializeObject(imagenes), Encoding.UTF8, "application/json");
+                string jsonImg = api + "/registro/imagen";
+                HttpResponseMessage responseMessage = await client.PostAsync(jsonImg, json);
+                if(responseMessage.IsSuccessStatusCode )
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch(Exception ex)
+            {
+                return View();
+            }
+        }
 
     }
 }

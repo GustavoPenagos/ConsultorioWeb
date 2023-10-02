@@ -61,7 +61,7 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="@Url.Action("AgregarFotos","Registro")" class="text-decoration-none">
+                            <a href="@Url.Action("CargarImagen","Registro")" class="text-decoration-none">
                                 <p class="text-black">
                                     <img src="~/Content/Images/addPhoto.svg" />
                                     Agregar fotos
@@ -77,7 +77,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Fotos","Lista")" class="text-decoration-none">
+                            <a href="@Url.Action("Fotos","Lista", new {id = 0})" class="text-decoration-none">
                                 <p class="text-black">
                                     <img src="~/Content/Images/listPhoto.svg" />
                                     Ver fotos
@@ -92,7 +92,11 @@
     <br /><br /><br /><br /><br />
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <footer class="text-center text-white fixed-bottom" style="background-color: #ABD3FC;">
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">

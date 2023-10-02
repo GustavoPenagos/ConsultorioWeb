@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "CargarImagen";
+}
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#buscar').select2();
+        });
+    </script>
+}
+
+<h2>CargarImagen</h2>
+
+<main>
+    @using (Html.BeginForm("AgregarFotos", "Registro", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Id_Usuario" id="buscar">
+            @foreach (var item in ViewBag.Usuario)
+            {
+                <option value="@item.id_Usuario">@item.id_Usuario - @item.nombre @item.apellido</option>
+            }
+        </select>
+
+    <input id="input-b1" name="imgFile" type="file" class="file" data-browse-on-zone-click="true">
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    }
+
+</main>

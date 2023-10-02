@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Fotos";
+}
+
+<h2>Fotos</h2>
+<main>
+    <div class="container">
+        @foreach (var item in ViewBag.Images)
+        {
+            <img src="@item.Value" style="width: 50%;" />
+        }
+    </div>
+</main>

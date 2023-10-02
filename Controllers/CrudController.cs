@@ -16,8 +16,8 @@ namespace ConsultorioWeb.Controllers
             try
             {
                 HttpClient client = new HttpClient();
-                string apiDelete = api + "/api/eliminar/usuario" + "?id=" + id;
-                HttpResponseMessage message = await client.GetAsync(apiDelete);
+                string apiDelete = api + "/eliminar/usuario" + "?id=" + id;
+                HttpResponseMessage message = await client.DeleteAsync(apiDelete);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -32,7 +32,7 @@ namespace ConsultorioWeb.Controllers
             try
             {
                 HttpClient client = new HttpClient();
-                string apiDelete = api + "/api/eliminar/cita" + "?id=" + id;
+                string apiDelete = api + "/eliminar/cita" + "?id=" + id;
                 HttpResponseMessage message = await client.DeleteAsync(apiDelete);
 
                 return RedirectToAction("Citas", "Lista");
