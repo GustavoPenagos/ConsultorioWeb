@@ -21,9 +21,9 @@
                     {
                         <tr>
                             <td>@item.tipodocumento</td>
-                            <td>@item.id_Usuario</td>
+                            <td>@item.idUsuario</td>
                             <td>
-                                <a href="@Url.Action("Historial","Lista", new {id = item.id_Usuario})" class="text-decoration-none">
+                                <a href="@Url.Action("Historial","Lista", new {id = item.idUsuario})" class="text-decoration-none">
                                     <p class="text-black">
                                         @item.nombre @item.apellido
                                     </p>
@@ -34,22 +34,22 @@
                             <td>@item.citas</td>
                             <td>@item.hora</td>
                             <td>
-                                <a href="@Url.Action("RegistroUsuario","Registro", new {id = item.id_Usuario})">
+                                <a href="@Url.Action("RegistroUsuario","Registro", new {id = item.idUsuario})">
                                     <img src="~/Content/Images/Edit.svg" />
                                 </a>
                             </td>
                             <td>
-                                <a href="@Url.Action("EliminarUsuario","Crud", new {id = item.id_Usuario})">
+                                <a href="@Url.Action("EliminarUsuario","Crud", new {id = item.idUsuario})">
                                     <img src="~/Content/Images/Delete.svg" />
                                 </a>
                             </td>
                             <td>
-                                <a href="@Url.Action("RegistrarCita","Registro", new {id = item.id_Usuario, nombre = item.nombre, })">
+                                <a href="@Url.Action("RegistrarCita","Registro", new {id = item.idUsuario, nombre = item.nombre, })">
                                     <img src="~/Content/Images/addDate.svg" />
                                 </a>
                             </td>
                             <td>
-                                <a href="@Url.Action("PlanTratamiento","Tratamiento", new {id = item.id_Usuario})">
+                                <a href="@Url.Action("PlanTratamiento","Tratamiento", new {id = item.idUsuario})">
                                     <img src="~/Content/Images/tratamiento.svg" />
                                 </a>
                             </td>

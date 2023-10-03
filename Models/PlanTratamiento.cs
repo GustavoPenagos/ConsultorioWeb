@@ -7,7 +7,7 @@ namespace ConsultorioWeb.Models
 {
     public class PlanTratamiento
     {
-        public long Id_Usuario { get; set; }
+        public long IdUsuario { get; set; }
         public string Diagnostico { get; set; }
         public string Pronostico { get; set; }
         public string Tratamiento { get; set; }

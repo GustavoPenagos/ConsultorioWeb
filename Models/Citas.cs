@@ -7,7 +7,7 @@ namespace ConsultorioWeb.Models
 {
     public class Citas
     {
-        public long Id_Usuario { get; set; }
+        public long IdUsuario { get; set; }
         public DateTime FechaCita { get; set; }
         public string HoraCita { get; set; }
     }

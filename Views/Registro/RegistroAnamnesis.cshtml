@@ -12,7 +12,7 @@
             <article>
                 <header>
                     <h2>2. ANAMNESIS</h2>
-                    <input type="text" value="@ViewBag.idUsuario" name="Id_Usuario" hidden readonly />
+                    <input type="text" value="@TempData["id"]" name="IdUsuario" hidden readonly />
                 </header>
                 <br />
                 <table class="table table-striped">
@@ -22,13 +22,13 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Motivo de consulta</span>
                                 </div>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" cols="30" name="Motivo_Consulta"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" cols="30" name="MotivoConsulta"></textarea>
                             </td>
                             <td>
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Historial de enfermedad actual</span>
                                 </div>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" cols="30" name="Emf_Actual"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" cols="30" name="EmferActual"></textarea>
                             </td>
                         </tr>
                     </thead>

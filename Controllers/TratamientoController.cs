@@ -29,7 +29,7 @@ namespace ConsultorioWeb.Controllers
             {
                 PlanTratamiento planTratamiento = new PlanTratamiento
                 {
-                    Id_Usuario = idUsuario,
+                    IdUsuario = idUsuario,
                     Diagnostico = diagnostico,
                     Pronostico = pronostico,
                     Tratamiento = tratamientos,
@@ -47,10 +47,10 @@ namespace ConsultorioWeb.Controllers
                     {
                         EstadoTratamiento estado = new EstadoTratamiento
                         {
-                            Id_Usuario = idUsuario,
+                            IdUsuario = idUsuario,
                             Fecha = fecha[i],
                             Diente = diente[i],
-                            Trata_Efectuado = tratamiento[i],
+                            TrataEfectuado = tratamiento[i],
                             Doctor = doctor[i],
                             Firma = firma[i]
                         };

@@ -108,10 +108,10 @@ namespace ConsultorioWeb.Controllers
             try
             {
                 string apiDept = api + "/buscar/departamento";
-                HttpResponseMessage message1 = await client.GetAsync(apiDept + "?id=" + usuario.Id_Ciudad);
+                HttpResponseMessage message1 = await client.GetAsync(apiDept + "?id=" + usuario.IdCiudad);
                 string departamento = await message1.Content.ReadAsStringAsync();
                 
-                usuario.Id_Departamento = Convert.ToInt32(departamento);
+                usuario.IdDepartamento = Convert.ToInt32(departamento);
 
                 json = new StringContent(JsonConvert.SerializeObject(usuario), Encoding.UTF8, "application/json");
                 string apiUsuario = api + "/registro/usuario";
@@ -119,7 +119,8 @@ namespace ConsultorioWeb.Controllers
                 if (message.IsSuccessStatusCode)
                 {
                     TempData["nombre"]= usuario.Nombre;
-                    TempData["id"]= usuario.Id_Usuario;
+                    TempData["id"]= usuario.IdUsuario;
+                    ViewBag.idUsuario = usuario.IdUsuario;
                     return RedirectToAction("RegistroAnamnesis", "Registro");
                 }
                 else
@@ -145,7 +146,7 @@ namespace ConsultorioWeb.Controllers
                 HttpResponseMessage message = await client.PostAsync(apiAnamnesis, json);
                 if(message.IsSuccessStatusCode)
                 {
-                    TempData["id"] = anamnesis.Id_Usuario;
+                    TempData["id"] = anamnesis.IdUsuario;
                     return RedirectToAction("RegistroFamiliar", "Registro");
                 }
                 else
@@ -170,7 +171,7 @@ namespace ConsultorioWeb.Controllers
                 HttpResponseMessage message = await client.PostAsync(apiFamiliar, json);
                 if (message.IsSuccessStatusCode)
                 {
-                    TempData["id"] = familiar.Id_Usuario;
+                    TempData["id"] = familiar.IdUsuario;
                     return RedirectToAction("RegistroEstomatologico", "Registro");
                 }
                 else
@@ -195,7 +196,7 @@ namespace ConsultorioWeb.Controllers
                 HttpResponseMessage message = await client.PostAsync(apiEstomatologico, json);
                 if (message.IsSuccessStatusCode)
                 {
-                    TempData["id"] = estomatologico.Id_Usuario;
+                    TempData["id"] = estomatologico.IdUsuario;
                     return RedirectToAction("RegistroCartaDental", "Registro");
                 }
                 else
@@ -225,6 +226,7 @@ namespace ConsultorioWeb.Controllers
                 }
                 else
                 {
+                    TempData["id"] = dentalAdulto.IdUsuario;
                     return RedirectToAction("RegistroCartaDental", "Registro");
                 }
             }
@@ -249,6 +251,7 @@ namespace ConsultorioWeb.Controllers
                 }
                 else
                 {
+                    TempData["id"] = dentalNino.IdUsuario;
                     return RedirectToAction("RegistroCartaDental", "Registro");
                 }
             }
@@ -271,7 +274,7 @@ namespace ConsultorioWeb.Controllers
                 }
                 var cita = new Citas
                 {
-                    Id_Usuario = citas.Id_Usuario,
+                    IdUsuario = citas.IdUsuario,
                     FechaCita = Convert.ToDateTime(citas.FechaCita.ToShortDateString()),
                     HoraCita = citas.FechaCita.ToShortTimeString()
                 };

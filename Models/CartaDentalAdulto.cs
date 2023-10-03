@@ -8,7 +8,7 @@ namespace ConsultorioWeb.Models
 {
     public class CartaDentalAdulto
     {
-        public int Id_Usuario { get; set; }
+        public int IdUsuario { get; set; }
         public string c11 { get; set; }
         public string c12 { get; set; }
         public string c13 { get; set; }

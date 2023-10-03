@@ -8,8 +8,8 @@ namespace ConsultorioWeb.Models
 {
     public class Imagenes
     {
-        public int Id_Usuario { get; set; }
+        public int IdUsuario { get; set; }
         public string Imagen { get; set; }
-        public DateTime? Fecha_Carga { get; set; } = DateTime.Now;
+        public DateTime? Fecha_Carga { get; set; }
     }
 }

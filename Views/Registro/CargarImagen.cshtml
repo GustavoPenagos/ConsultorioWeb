@@ -16,10 +16,10 @@
 <main>
     @using (Html.BeginForm("AgregarFotos", "Registro", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Id_Usuario" id="buscar">
+        <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="IdUsuario" id="buscar">
             @foreach (var item in ViewBag.Usuario)
             {
-                <option value="@item.id_Usuario">@item.id_Usuario - @item.nombre @item.apellido</option>
+                <option value="@item.idUsuario">@item.idUsuario - @item.nombre @item.apellido</option>
             }
         </select>
 

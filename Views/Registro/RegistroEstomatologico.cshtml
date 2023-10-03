@@ -11,7 +11,7 @@
             <article>
                 <header>
                     <h2>4. EXAMEN ESTOMATOLOGICO</h2>
-                    <input type="text" value="@ViewBag.idUsuario" name="Id_Usuario" hidden readonly />
+                    <input type="text" value="@TempData["id"]" name="IdUsuario" hidden/>
                 </header>
                 <br />
                 <table class="table table-striped">
@@ -20,7 +20,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">LABIOS</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="labios">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Labios">
                                 <option value="1">NORMAL</option>
                                 <option value="2">ANORMAL</option>
                             </select>
@@ -29,7 +29,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">LENGUA</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="lengua">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Lengua">
                                 <option value="1">NORMAL</option>
                                 <option value="2">ANORMAL</option>
                             </select>
@@ -38,7 +38,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">FRENILLOS</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="frenillos">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Frenillos">
                                 <option value="1">NORMAL</option>
                                 <option value="2">ANORMAL</option>
                             </select>
@@ -49,7 +49,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">ENCIAS</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="encias">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Encias">
                                 <option value="1">NORMAL</option>
                                 <option value="2">ANORMAL</option>
                             </select>
@@ -58,7 +58,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">MUSCULOS</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="musculo">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Musculos">
                                 <option value="1">NORMAL</option>
                                 <option value="2">ANORMAL</option>
                             </select>
@@ -67,7 +67,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">MAXILARES</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="maxilares">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Maxilares">
                                 <option value="1">NORMAL</option>
                                 <option value="2">ANORMAL</option>
                             </select>
@@ -78,7 +78,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">PALADAR</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="paladar">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Paladar">
                                 <option value="1">NORMAL</option>
                                 <option value="2">ANORMAL</option>
                             </select>
@@ -87,7 +87,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">PISO-BOCA</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="piso_boca">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="PisoBoca">
                                 <option value="1">NORMAL</option>
                                 <option value="2">ANORMAL</option>
                             </select>
@@ -96,7 +96,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">GLANDULAS SALIVALES</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="glan_saliva">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="GlanSalivales">
                                 <option value="1">NORMAL</option>
                                 <option value="2">ANORMAL</option>
                             </select>
@@ -107,7 +107,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">CARRILLOS</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="carrillos">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Carrillos">
                                 <option value="1">NORMAL</option>
                                 <option value="2">ANORMAL</option>
                             </select>
@@ -116,7 +116,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">OROFARINGE</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="orofaringe">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Orofarige">
                                 <option value="1">NORMAL</option>
                                 <option value="2">ANORMAL</option>
                             </select>

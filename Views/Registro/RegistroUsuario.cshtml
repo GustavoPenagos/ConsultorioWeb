@@ -38,10 +38,10 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Tipo identificacion</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Id_Documento">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="IdDocumento">
                                 @foreach (var item in ViewBag.Documentos)
                                 {
-                                    <option value="@item.Id_Documento">@item.Documento</option>
+                                    <option value="@item.IdDocumento">@item.Documento</option>
                                 }
                             </select>
                         </td>
@@ -49,7 +49,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">N° Documento</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Id_Usuario" required>
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="IdUsuario" required>
                         </td>
                     </tr>
                     <tr>
@@ -57,7 +57,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Estdao civil</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" id="tp_doc" name="Estado_Civil">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" id="tp_doc" name="EstadoCivil">
                                 @foreach (var item in ViewBag.EstadoCivil)
                                 {
                                     <option value="@item.Id" id="civil">@item.CivilNo</option>
@@ -68,7 +68,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Fecha de nacimiento</span>
                             </div>
-                            <input type="date" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Fecha_Nacido" required>
+                            <input type="date" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="FechaNacido" required>
                         </td>
                         <td>
                             <div class="input-group-prepend">
@@ -80,10 +80,10 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Ciudad de nacimiento</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Id_Ciudad" id="buscar">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="IdCiudad" id="buscar">
                                 @foreach (var item in ViewBag.Ciudades)
                                 {
-                                    <option value="@item.Id_Ciudad">@item.Municipio</option>
+                                    <option value="@item.IdCiudad">@item.Municipio</option>
                                 }
                             </select>
                         </td>
@@ -93,10 +93,10 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Sexo</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Id_Genero">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="IdGenero">
                                 @foreach (var item in ViewBag.Genero)
                                 {
-                                    <option value="@item.Id_Genero">@item.Sexo</option>
+                                    <option value="@item.IdGenero">@item.Sexo</option>
                                 }
                             </select>
                         </td>
@@ -136,7 +136,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Nombre del acudiente</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Nombre_Acudiente">
+                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="NombreAcudiente">
                         </td>
                         <td>
                             <div class="input-group-prepend">

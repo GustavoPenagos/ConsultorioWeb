@@ -12,7 +12,7 @@
             <article>
                 <header>
                     <h2>3. ANTECEDENTES FAMILIARES </h2>
-                    <input type="text" value="@ViewBag.idUsuario" name="Id_Usuario" hidden readonly />
+                    <input type="text" value="@TempData["id"]" name="IdUsuario" hidden readonly />
                 </header>
                 <br />
                 <table class="table table-striped">
@@ -21,7 +21,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">CANCER</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="cancer">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Cancer">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -30,7 +30,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">SINUSITIS</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="sinusitis">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Sinusitis">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -39,7 +39,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">ORGANOS-SENTIDOS</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="org_snt">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="OrganosSentidos">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -48,7 +48,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">DIABETES</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="diabetes">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Diabetes">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -59,7 +59,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">INFECCIONES</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="infecciones">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Infecciones">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -68,7 +68,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">HEPATITIS</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="hepatitis">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Hepatitis">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -77,7 +77,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">TRANSTORNOS GASTRICOS</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="trans_gastico">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="TransGastricos">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -86,7 +86,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">CARDIOPATIAS</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="cardiopatias">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Cardiopatias">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -97,7 +97,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">FIEBRE REUMATICA</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="fieb_reumatica">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="FiebReumatica">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -106,7 +106,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">TRATAMIENTO MEDICO</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="trat_medico">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="TrataMedico">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -115,7 +115,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">ENFERMEDADES RESPIRATORIAS</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="enf_respira">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="EnferRespiratoria">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -124,7 +124,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">HIPERTENSION</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="hipertension">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Hipertension">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -135,7 +135,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">ALTERACIONES COAGULATORIAS</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="alt_coagula">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="AltCoagulatorias">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -144,7 +144,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">TRASTORNOS NEUMOLOGICOS</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="trans_neumolo">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="TransNeumologico">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -153,7 +153,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">TENSION ARTERIAL</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="ten_arterial">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="TenArterial">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -162,7 +162,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">ORTOS</span>
                             </div>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" cols="100" name="otros"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" cols="100" name="Otros"></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -170,7 +170,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">EMBARAZO</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="emabrazo">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Embarazo">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -179,13 +179,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">MESES</span>
                             </div>
-                            <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="meses" value="0">
+                            <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Meses" value="0">
                         </td>
                         <td>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">LACTANCIA</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="lactancia">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="Lactancia">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -194,7 +194,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">FRECUENCIA DE CEPILLADO</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="frec_cepilla">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="FreCepillado">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -205,7 +205,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">USO DE SEDA DENTAL</span>
                             </div>
-                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="ceda">
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="CedaDental">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
@@ -214,7 +214,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">OBSERVACIONES</span>
                             </div>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" cols="100" name="observacion"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" cols="100" name="Observaciones"></textarea>
                         </td>
                     </tr>
                     <tr><td colspan="4"></td></tr>
