@@ -134,6 +134,7 @@
     <Compile Include="Models\CartaDentalNino.cs" />
     <Compile Include="Models\Citas.cs" />
     <Compile Include="Models\Ciudad.cs" />
+    <Compile Include="Models\Contabilidad.cs" />
     <Compile Include="Models\Convecciones.cs" />
     <Compile Include="Models\Departamento.cs" />
     <Compile Include="Models\EstadoCivil.cs" />

@@ -24,8 +24,7 @@ namespace ConsultorioWeb.Controllers
         StringContent json;
         private string path;
 
-        //Start View
-        //initial register
+        #region Controller - Views
 
         public async Task<dynamic> RegistroUsuario(long id=0)
         {
@@ -45,21 +44,25 @@ namespace ConsultorioWeb.Controllers
             ViewBag.Genero = generos;
             return View();
         }
+
         public ActionResult RegistroAnamnesis()
         {
             ViewBag.idUsuario = TempData["id"];
             return View();
         }
+
         public ActionResult RegistroFamiliar()
         {
             ViewBag.idUsuario = TempData["id"];
             return View();
         }
+
         public ActionResult RegistroEstomatologico()
         {
             ViewBag.idUsuario = TempData["id"];
             return View();
         }
+
         public async Task<dynamic> CargarImagen()
         {
             var usuarios = await new HomeController().Index(null, true);
@@ -70,6 +73,7 @@ namespace ConsultorioWeb.Controllers
             ViewBag.Usuario = JsonConvert.DeserializeObject(usuarios);
             return View();
         }
+
         public async Task<dynamic> RegistroCartaDental()
         {
             
@@ -79,8 +83,10 @@ namespace ConsultorioWeb.Controllers
             ViewBag.idUsuario = TempData["id"];
             return View();
         }
-        
-        //dates
+
+        #endregion
+
+        #region Views - Registers 
 
         public async Task<dynamic> RegistrarCita(long id, string nombre = "")
         {
@@ -98,9 +104,6 @@ namespace ConsultorioWeb.Controllers
                 return View();
             }
         }
-        
-        //dates
-        //End Views
 
         public async Task<dynamic> InsertarCliente(Usuario usuario)
         {
@@ -261,7 +264,35 @@ namespace ConsultorioWeb.Controllers
             }
         }
 
-        //dates
+        public async Task<dynamic> AgregarFotos(Imagenes imagenes, HttpPostedFileBase imgFile)
+        {
+            try
+            {
+                var fileName = Path.GetFileName(imgFile.FileName);
+                path = Path.Combine(Server.MapPath("/Content/Imagen/"), fileName);
+                string path2 = ("/Content/Imagen/") + fileName;
+                imgFile.SaveAs(path);
+                imagenes.Imagen = path2.Replace(@"\", "/");
+
+                HttpClient client = new HttpClient();
+                json = new StringContent(JsonConvert.SerializeObject(imagenes), Encoding.UTF8, "application/json");
+                string jsonImg = api + "/registro/imagen";
+                HttpResponseMessage responseMessage = await client.PostAsync(jsonImg, json);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
+        }
+
+        #endregion
+
+        #region Registers dates
 
         public async Task<dynamic> InsertarCita(Citas citas)
         {
@@ -293,9 +324,10 @@ namespace ConsultorioWeb.Controllers
                 return RedirectToAction("RegistrarCita", "Registro");
             }
         }
-        
-        //dates
-        //aditional <select> data 
+
+        #endregion
+
+        #region Type - Documents
 
         public async Task<dynamic> Convecciones()
         {
@@ -412,31 +444,7 @@ namespace ConsultorioWeb.Controllers
             return "";
         }
 
-        public async Task<dynamic> AgregarFotos(Imagenes imagenes, HttpPostedFileBase imgFile)
-        {
-            try
-            {
-                var fileName = Path.GetFileName(imgFile.FileName);
-                path = Path.Combine(Server.MapPath("/Content/Imagen/"),fileName);
-                string path2 = ("/Content/Imagen/") + fileName;
-                imgFile.SaveAs(path);
-                imagenes.Imagen = path2.Replace(@"\", "/");
-
-                HttpClient client = new HttpClient();
-                json = new StringContent(JsonConvert.SerializeObject(imagenes), Encoding.UTF8, "application/json");
-                string jsonImg = api + "/registro/imagen";
-                HttpResponseMessage responseMessage = await client.PostAsync(jsonImg, json);
-                if(responseMessage.IsSuccessStatusCode )
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                return RedirectToAction("Index", "Home");
-            }
-            catch(Exception ex)
-            {
-                return View();
-            }
-        }
+        #endregion
 
     }
 }

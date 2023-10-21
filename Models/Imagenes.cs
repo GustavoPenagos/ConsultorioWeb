@@ -10,6 +10,6 @@ namespace ConsultorioWeb.Models
     {
         public int IdUsuario { get; set; }
         public string Imagen { get; set; }
-        public DateTime? Fecha_Carga { get; set; }
+        public DateTime Fecha_Carga { get; set; } = DateTime.Now;
     }
 }
