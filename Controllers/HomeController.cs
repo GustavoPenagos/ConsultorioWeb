@@ -67,7 +67,6 @@ namespace ConsultorioWeb.Controllers
                         case "editarUsuario":
                             return usuario;
                         case "registro":
-                            
                             return usuario;
                         default:
                             return RedirectToAction("Index", "Home", new { usuario = usuario });

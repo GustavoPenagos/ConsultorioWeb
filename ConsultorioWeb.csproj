@@ -208,6 +208,11 @@
     <Content Include="Views\Lista\Historial.cshtml" />
     <Content Include="Views\Registro\CargarImagen.cshtml" />
     <Content Include="Views\Lista\Fotos.cshtml" />
+    <Content Include="Views\Partial\_DatosUsuario.cshtml" />
+    <Content Include="Views\Partial\_DatosAnamnesis.cshtml" />
+    <Content Include="Views\Partial\_DatosEstomatologico.cshtml" />
+    <Content Include="Views\Partial\_DatosFamiliar.cshtml" />
+    <Content Include="Views\Partial\_DatosDental.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

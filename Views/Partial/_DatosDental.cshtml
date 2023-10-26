@@ -1,0 +1,160 @@
+﻿
+@{
+    ViewBag.Title = "_DatosDental";
+}
+
+<h2>_DatosDental</h2>
+
+<main>
+    <div class="row">
+        <table class="table table-striped table-hover">
+            @if (ViewBag.Edad < 18)
+            {
+                foreach (var item in ViewBag.Dental)
+                {
+                    <tbody>
+                        <tr>
+                            <td>Diente 51</td>
+                            <td>@item.c51</td>
+                            <td>Diente 61</td>
+                            <td>@item.c61</td>
+                            <td>Diente 71</td>
+                            <td>@item.c71</td>
+                            <td>Diente 81</td>
+                            <td>@item.c81</td>
+                        </tr>
+                        <tr>
+                            <td>Diente 52</td>
+                            <td>@item.c52</td>
+                            <td>Diente 62</td>
+                            <td>@item.c62</td>
+                            <td>Diente 72</td>
+                            <td>@item.c72</td>
+                            <td>Diente </td>
+                            <td>@item.c82</td>
+                        </tr>
+                        <tr>
+                            <td>Diente 53</td>
+                            <td>@item.c53</td>
+                            <td>Diente 63</td>
+                            <td>@item.c63</td>
+                            <td>Diente 73</td>
+                            <td>@item.c73</td>
+                            <td>Diente 83</td>
+                            <td>@item.c83</td>
+                        </tr>
+                        <tr>
+                            <td>Diente 54</td>
+                            <td>@item.c54</td>
+                            <td>Diente 64</td>
+                            <td>@item.c64</td>
+                            <td>Diente 74</td>
+                            <td>@item.c74</td>
+                            <td>Diente 84</td>
+                            <td>@item.c84</td>
+                        </tr>
+                        <tr>
+                            <td>Diente 55</td>
+                            <td>@item.c55</td>
+                            <td>Diente 65</td>
+                            <td>@item.c65</td>
+                            <td>Diente 75</td>
+                            <td>@item.c75</td>
+                            <td>Diente 55</td>
+                            <td>@item.c85</td>
+                        </tr>
+                    </tbody>
+                }
+            }
+            else
+            {
+                foreach (var item in ViewBag.Dental)
+                {
+                    <tbody>
+                        <tr>
+                            <td>Diente 11</td>
+                            <td>@item.c11</td>
+                            <td>Diente 21</td>
+                            <td>@item.c21</td>
+                            <td>Diente 31</td>
+                            <td>@item.c31</td>
+                            <td>Diente 41</td>
+                            <td>@item.c41</td>
+                        </tr>
+                        <tr>
+                            <td>Diente 12</td>
+                            <td>@item.c12</td>
+                            <td>Diente 22</td>
+                            <td>@item.c22</td>
+                            <td>Diente 32</td>
+                            <td>@item.c32</td>
+                            <td>Diente 42</td>
+                            <td>@item.c42</td>
+                        </tr>
+                        <tr>
+                            <td>Diente 13</td>
+                            <td>@item.c13</td>
+                            <td>Diente 23</td>
+                            <td>@item.c23</td>
+                            <td>Diente 33</td>
+                            <td>@item.c33</td>
+                            <td>Diente 43</td>
+                            <td>@item.c43</td>
+                        </tr>
+                        <tr>
+                            <td>Diente 14</td>
+                            <td>@item.c14</td>
+                            <td>Diente 24</td>
+                            <td>@item.c24</td>
+                            <td>Diente 34</td>
+                            <td>@item.c34</td>
+                            <td>Diente 44</td>
+                            <td>@item.c44</td>
+                        </tr>
+                        <tr>
+                            <td>Diente 15</td>
+                            <td>@item.c15</td>
+                            <td>Diente 25</td>
+                            <td>@item.c25</td>
+                            <td>Diente 35</td>
+                            <td>@item.c35</td>
+                            <td>Diente 45</td>
+                            <td>@item.c45</td>
+                        </tr>
+                        <tr>
+                            <td>Diente 16</td>
+                            <td>@item.c16</td>
+                            <td>Diente 26</td>
+                            <td>@item.c26</td>
+                            <td>Diente 36</td>
+                            <td>@item.c36</td>
+                            <td>Diente 46</td>
+                            <td>@item.c46</td>
+                        </tr>
+                        <tr>
+                            <td>Diente 17</td>
+                            <td>@item.c17</td>
+                            <td>Diente 27</td>
+                            <td>@item.c27</td>
+                            <td>Diente 37</td>
+                            <td>@item.c37</td>
+                            <td>Diente 47</td>
+                            <td>@item.c47</td>
+                        </tr>
+                        <tr>
+                            <td>Diente 18</td>
+                            <td>@item.c18</td>
+                            <td>Diente 28</td>
+                            <td>@item.c28</td>
+                            <td>Diente 38</td>
+                            <td>@item.c38</td>
+                            <td>Diente 48</td>
+                            <td>@item.c48</td>
+                        </tr>
+                    </tbody>
+                }
+            }
+        </table>
+    </div>
+</main>
+

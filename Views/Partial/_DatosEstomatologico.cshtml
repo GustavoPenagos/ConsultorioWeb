@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "_DatosEstomatologico";
+}
+
+<h2>_DatosEstomatologico</h2>
+
+<main>
+    <div class="row">
+        <table class="table table-striped table-hover">
+            @foreach (var item in ViewBag.Estomatologico)
+            {
+                <tbody>
+                    <tr>
+                        <td>Labios</td>
+                        <td>@item.labios</td>
+                    </tr>
+                    <tr>
+                        <td>Encias</td>
+                        <td>@item.encias</td>
+                    </tr>
+                    <tr>
+                        <td>Paladar</td>
+                        <td>@item.paladar</td>
+                    </tr>
+                    <tr>
+                        <td>Carrillos</td>
+                        <td>@item.carrillos</td>
+                    </tr>
+                    <tr>
+                        <td>Lengua</td>
+                        <td>@item.lengua</td>
+                    </tr>
+                    <tr>
+                        <td>musculos</td>
+                        <td>@item.musculos</td>
+                    </tr>
+                    <tr>
+                        <td>Piso-Boca</td>
+                        <td>@item.pisoboca</td>
+                    </tr>
+                    <tr>
+                        <td>Orofarige</td>
+                        <td>@item.orofaringe</td>
+                    </tr>
+                    <tr>
+                        <td>Frenillos</td>
+                        <td>@item.frenillos</td>
+                    </tr>
+                    <tr>
+                        <td>maxilares</td>
+                        <td>@item.maxilares</td>
+                    </tr>
+                    <tr>
+                        <td>Glandulas salivales</td>
+                        <td>@item.salivales</td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</main>

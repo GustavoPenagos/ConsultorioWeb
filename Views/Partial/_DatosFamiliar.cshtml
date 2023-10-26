@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "_DatosFamiliar";
+}
+
+<h2>_DatosFamiliar</h2>
+<main>
+    <div class="row">
+        <table class="table table-striped table-hover">
+            @foreach (var item in ViewBag.Familiar)
+            {
+                <tbody>
+                    <tr>
+                        <td>Cancer</td>
+                        <td>@item.cancer</td>
+                    </tr>
+                    <tr>
+                        <td>Sinusitis</td>
+                        <td>@item.sinusitis</td>
+                    </tr>
+                    <tr>
+                        <td>Organos y sentidos</td>
+                        <td>@item.organos</td>
+                    </tr>
+                    <tr>
+                        <td>Diabetes</td>
+                        <td>@item.diabetes</td>
+                    </tr>
+                    <tr>
+                        <td>Infecciones</td>
+                        <td>@item.infecciones</td>
+                    </tr>
+                    <tr>
+                        <td>Hepatitis</td>
+                        <td>@item.hepatitis</td>
+                    </tr>
+                    <tr>
+                        <td>Transtornos grasticos</td>
+                        <td>@item.gastrico</td>
+                    </tr>
+                    <tr>
+                        <td>Cardiopatias</td>
+                        <td>@item.cardiopatias</td>
+                    </tr>
+                    <tr>
+                        <td>Fiebre reumatica</td>
+                        <td>@item.fiebre</td>
+                    </tr>
+                    <tr>
+                        <td>Tratamiento medico</td>
+                        <td>@item.medico</td>
+                    </tr>
+                    <tr>
+                        <td>Enfermedad respiratoria</td>
+                        <td>@item.respiratoria</td>
+                    </tr>
+                    <tr>
+                        <td>Hipertension</td>
+                        <td>@item.hipertension</td>
+                    </tr>
+                    <tr>
+                        <td>Alteraciones de coagulacion</td>
+                        <td>@item.caogulatoria</td>
+                    </tr>
+                    <tr>
+                        <td>Transtornos neumologicos</td>
+                        <td>@item.neumologico</td>
+                    </tr>
+                    <tr>
+                        <td>Hipertencion arterial</td>
+                        <td>@item.arterial</td>
+                    </tr>
+                    <tr>
+                        <td>Otros</td>
+                        <td>@item.otros</td>
+                    </tr>
+                    <tr>
+                        <td>Embarazo</td>
+                        <td>@item.embarazo</td>
+                    </tr>
+                    <tr>
+                        <td>Meses</td>
+                        <td>@item.meses</td>
+                    </tr>
+                    <tr>
+                        <td>Lactancia</td>
+                        <td>@item.lactancia</td>
+                    </tr>
+                    <tr>
+                        <td>Frecuencia de cepillado</td>
+                        <td>@item.cepillado</td>
+                    </tr>
+                    <tr>
+                        <td>Uso de seda dental</td>
+                        <td>@item.seda</td>
+                    </tr>
+                    <tr>
+                        <td>Observaciones</td>
+                        <td>@item.observaciones</td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</main>
+

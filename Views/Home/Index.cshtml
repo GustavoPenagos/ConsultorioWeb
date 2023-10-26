@@ -35,22 +35,22 @@
                             <td>@item.hora</td>
                             <td>
                                 <a href="@Url.Action("RegistroUsuario","Registro", new {id = item.idUsuario})">
-                                    <img src="~/Content/Images/Edit.svg" />
+                                    <img src="~/Content/Images/Edit.svg" title="Editar"/>
                                 </a>
                             </td>
                             <td>
                                 <a href="@Url.Action("EliminarUsuario","Crud", new {id = item.idUsuario})">
-                                    <img src="~/Content/Images/Delete.svg" />
+                                    <img src="~/Content/Images/Delete.svg" title="Eliminar"/>
                                 </a>
                             </td>
                             <td>
                                 <a href="@Url.Action("RegistrarCita","Registro", new {id = item.idUsuario, nombre = item.nombre, })">
-                                    <img src="~/Content/Images/addDate.svg" />
+                                    <img src="~/Content/Images/addDate.svg" title="Agregar cita"/>
                                 </a>
                             </td>
                             <td>
                                 <a href="@Url.Action("PlanTratamiento","Tratamiento", new {id = item.idUsuario})">
-                                    <img src="~/Content/Images/tratamiento.svg" />
+                                    <img src="~/Content/Images/tratamiento.svg" title="Agregar Tratamiento"/>
                                 </a>
                             </td>
                         </tr>
