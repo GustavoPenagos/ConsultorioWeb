@@ -104,6 +104,18 @@ namespace ConsultorioWeb.Controllers
                 {
                     ViewBag.Images = JsonConvert.DeserializeObject(await message.Content.ReadAsStringAsync());
                 }
+                List<int> list = new List<int>();
+                for (int i = 0; i < ViewBag.Images.Count; i++)
+                {
+                    list.Add(Convert.ToInt32(ViewBag.Images[i].id.Value));
+                }
+
+                IEnumerable<int> duplicates = list.GroupBy(x => x)
+                                                .Where(g => g.Count() > 1)
+                                                .Select(x => x.Key);
+                var v = duplicates.Count();
+
+                var c = String.Join(",", duplicates);
 
                 return View();
             }catch (Exception ex)

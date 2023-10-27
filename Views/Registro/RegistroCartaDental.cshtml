@@ -7,7 +7,6 @@
 <main>
     @if (ViewBag.Carta < 18)
     {
-        <h2>Carta Dental Niños</h2>
         <br />
         using (Html.BeginForm("InsertarCartaDentalNino", "Registro", FormMethod.Post))
         {
@@ -16,8 +15,9 @@
             <div class="container">
                 <article>
                     <header>
-                        <h2>Carta deltal niños</h2>
+                        <h1>CARTA DENTAL NIÑOS</h1>
                     </header>
+                    <br />
                     <table class="table table-striped">
                         <tr>
                             <td>
@@ -265,7 +265,7 @@
     }
     else if (ViewBag.Carta >= 18)
     {
-        <h2>Carta Dental Adultos</h2>
+        <h1>CARTA DENTAL ADULTOS</h1>
         <br />
         using (Html.BeginForm("InsertarCartaDentalAdulto", "Registro", FormMethod.Post))
         {
@@ -273,6 +273,10 @@
             <br />
             <div class="container">
                 <article>
+                    <header>
+                        <h1>CARTA DENTAL ADULTOS</h1>
+                    </header>
+                    <br />
                     <table class="table table-striped">
                         <tr>
                             <td>

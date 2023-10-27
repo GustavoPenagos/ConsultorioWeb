@@ -3,15 +3,13 @@
     ViewBag.Title = "RegistroAnamnesis";
 }
 
-<h2>RegistroAnamnesis</h2>
-
 <main>
     @using (Html.BeginForm("InsertarAnamnesis", "Registro", FormMethod.Post))
     {
         <div class="container">
             <article>
                 <header>
-                    <h2>2. ANAMNESIS</h2>
+                    <h2>2. AMNANESIS</h2>
                     <input type="text" value="@TempData["id"]" name="IdUsuario" hidden readonly />
                 </header>
                 <br />

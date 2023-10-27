@@ -3,12 +3,29 @@
     ViewBag.Title = "Fotos";
 }
 
-<h2>Fotos</h2>
+<h2>FOTOS</h2>
 <main>
-    <div class="container">
-        @foreach (var item in ViewBag.Images)
-        {
-            <img src="@item.Value" style="width: 50%;" />
-        }
-    </div>
+   @if (ViewBag.Images.Count > 1)
+            {
+
+            }
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                ViewBag.Image = ViewBag.Images[i].imagen;
+                @foreach (var item in ViewBag.Images)
+                {
+                    <div class="carousel-item active">
+                        <center><img src="@item.imagen" class="d-block w-50" alt="..."></center>
+                    </div>
+                }
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
 </main>

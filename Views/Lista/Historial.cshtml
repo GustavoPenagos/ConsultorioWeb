@@ -7,16 +7,69 @@
 
 <main>
     <div class="container">
-        @Html.Partial("~/Views/Partial/_DatosUsuario.cshtml", (object)ViewBag.Usuario)
+        <center>
+            <p>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#usuario" role="button" aria-expanded="false" aria-controls="collapseExample" style="width: 50%;">
+                    Datos de usuario
+                </a>
+            </p>
+        </center>
+        <div class="collapse multi-collapse" id="usuario">
+            @Html.Partial("~/Views/Partial/_DatosUsuario.cshtml", (object)ViewBag.Usuario)
+        </div>
+        <center>
+            <br />
+            <p>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#amnanesis" role="button" aria-expanded="false" aria-controls="collapseExample" style="width: 50%;">
+                    Datos de Amnanesis
+                </a>
+            </p>
+        </center>
+        <div class="collapse multi-collapse" id="amnanesis">
+            @Html.Partial("~/Views/Partial/_DatosAnamnesis.cshtml", (object)ViewBag.Anamnesis)
+        </div>
         <br />
-        @Html.Partial("~/Views/Partial/_DatosAnamnesis.cshtml", (object)ViewBag.Anamnesis)
+        <center>
+            <p>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#familia" role="button" aria-expanded="false" aria-controls="collapseExample" style="width: 50%;">
+                    Antecedentes personales y familiares
+                </a>
+            </p>
+        </center>
+        <div class="collapse multi-collapse" id="familia">
+            @Html.Partial("~/Views/Partial/_DatosFamiliar.cshtml", (object)ViewBag.Familiar)
+        </div>
         <br />
-        @Html.Partial("~/Views/Partial/_DatosFamiliar.cshtml", (object)ViewBag.Familiar)
+        <center>
+            <p>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#estomatologico" role="button" aria-expanded="false" aria-controls="collapseExample" style="width: 50%;">
+                    Examen estomatologico
+                </a>
+            </p>
+        </center>
+        <div class="collapse multi-collapse" id="estomatologico">
+            @Html.Partial("~/Views/Partial/_DatosEstomatologico.cshtml", (object)ViewBag.Estomatologico)
+        </div>
         <br />
-        @Html.Partial("~/Views/Partial/_DatosEstomatologico.cshtml", (object)ViewBag.Estomatologico)
-        <br />
-        @Html.Partial("~/Views/Partial/_DatosDental.cshtml", (object)ViewBag.Dental)
-        <br />
+        <center>
+            <p>
+                @if (ViewBag.Edad < 18)
+                {
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#dental" role="button" aria-expanded="false" aria-controls="collapseExample" style="width: 50%;">
+                        Carta dental niños
+                    </a>
+                }
+                else
+                {
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#dental" role="button" aria-expanded="false" aria-controls="collapseExample" style="width: 50%;">
+                        Carta dental adultos
+                    </a>
+                }
+            </p>
+            </center>
+            <div class="collapse multi-collapse" id="dental">
+                @Html.Partial("~/Views/Partial/_DatosDental.cshtml", (object)ViewBag.Dental)
+            </div>
     </div>
 </main>
 

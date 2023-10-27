@@ -3,14 +3,13 @@
     ViewBag.Title = "RegistroEstomatologico";
 }
 
-<h2>RegistroEstomatologico</h2>
 <main>
     @using (Html.BeginForm("InsertarEstomatologico", "Registro", FormMethod.Post))
     {
         <div class="container">
             <article>
                 <header>
-                    <h2>4. EXAMEN ESTOMATOLOGICO</h2>
+                    <h1>4. EXAMEN ESTOMATOLOGICO</h1>
                     <input type="text" value="@TempData["id"]" name="IdUsuario" hidden/>
                 </header>
                 <br />

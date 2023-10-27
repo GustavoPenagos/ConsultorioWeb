@@ -13,6 +13,7 @@ namespace OdontologiaWeb.Models
         public int Diabetes { get; set; }
         public int Infecciones { get; set; }
         public int Hepatitis { get; set; }
+        public int Epilepsia { get; set; }
         public int TransGastricos { get; set; }
         public int Cardiopatias { get; set; }
         public int FiebReumatica { get; set; }

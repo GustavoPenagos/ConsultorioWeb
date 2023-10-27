@@ -15,6 +15,7 @@ namespace ConsultorioWeb.Controllers
     public class HomeController : Controller
     {
         public readonly string  api = System.Configuration.ConfigurationManager.AppSettings["UrlAPI"];
+
         public async Task<dynamic> Index(string usuario=null, bool caso = false)
         {
             try
@@ -82,8 +83,6 @@ namespace ConsultorioWeb.Controllers
                 return ViewBag.ErrorMessage = ex.Message;
             }
         }
-
-        
 
         public async Task<dynamic> BuscarCita(long id = 0)
         {
