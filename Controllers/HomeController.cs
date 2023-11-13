@@ -49,7 +49,7 @@ namespace ConsultorioWeb.Controllers
             catch (Exception ex)
             {
                 ViewBag.ErrorMessage = ex.Message;
-                return View();
+                return RedirectToAction("Index", "Home");
             }
         }
 

@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "_SaldoAbonos";
+}
+
+<h2>SALDO Y ABONOS</h2>
+<br />
+<main>
+    <div class="container">
+        <table class="table table-striped table-hover">
+            @using (Html.BeginForm("InsertarPago", "Registro", FormMethod.Get))
+            {
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="input-group-lg">
+                                    <h1 class="input-group-text">VALOR INICIAL DEL TRATAMIENTO</h1>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group-lg">
+                                    <input class="form-control" type="text" value="@ViewBag.Contabilidad.valor" readonly />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-group-lg">
+                                    <h1 class="input-group-text">SALDO ACTAUL</h1>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group-lg">
+                                    <input class="form-control" type="number" value="@ViewBag.Contabilidad.saldo" readonly />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-group-lg">
+                                    <h1 class="input-group-text">ABONO QUE DESEA REALIZAR</h1>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group-lg">
+                                    <input class="form-control" type="number" name="Abono" />
+                                    <input class="form-control" type="number" value="@ViewBag.Contabilidad.idUsuario" name="id" hidden />
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <center>
+                            <button type="submit" class="btn btn-primary" style="width: 50%">Guardar</button>
+                        </center>
+                    </tfoot>
+                
+            }
+        </table>
+    </div>
+</main>
+

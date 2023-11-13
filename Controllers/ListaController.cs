@@ -78,6 +78,14 @@ namespace ConsultorioWeb.Controllers
                                     ViewBag.Edad = Convert.ToInt32(await new HomeController().BuscarUsuario(Convert.ToInt32(id), "registro"));
                                     ViewBag.Dental = response5;
 
+                                    string apiContabilidad = api + "/contabilidad/consultar?id=" + id;
+                                    HttpResponseMessage message6 = await client.GetAsync(apiContabilidad);
+                                    if (message6.IsSuccessStatusCode)
+                                    {
+                                        var response6 = JsonConvert.DeserializeObject( await message6.Content.ReadAsStringAsync());
+                                        ViewBag.Contabilidad = response6;
+                                    }
+
                                 }
                             }
                         }
@@ -124,6 +132,5 @@ namespace ConsultorioWeb.Controllers
             }
         }
 
-        
     }
 }

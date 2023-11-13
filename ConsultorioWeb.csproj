@@ -213,6 +213,8 @@
     <Content Include="Views\Partial\_DatosEstomatologico.cshtml" />
     <Content Include="Views\Partial\_DatosFamiliar.cshtml" />
     <Content Include="Views\Partial\_DatosDental.cshtml" />
+    <Content Include="Views\Registro\RegistroContabilidad.cshtml" />
+    <Content Include="Views\Partial\_SaldoAbonos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

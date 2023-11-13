@@ -55,5 +55,25 @@ namespace ConsultorioWeb.Controllers
                 return ViewBag.ErrorMessage = ex.Message;
             }
         }
+
+        public async Task<dynamic> EliminarFoto(long id, string name)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                string apiDeleteFoto = api + "/eliminar/foto?id=" + id + "&name=" + name;
+                HttpResponseMessage httpResponse = await client.DeleteAsync(apiDeleteFoto);
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    string response = await httpResponse.Content.ReadAsStringAsync();
+                    return RedirectToAction("Fotos", "Lista");
+                }
+                return RedirectToAction("Index", "Home"); //ALERTA DE ERROR
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
     }
 }

@@ -9,19 +9,42 @@
             $('#buscar').select2();
         });
     </script>
+
 }
 
 <h2>CARGAR FOTOS</h2>
 <br />
 <main>
-    @using (Html.BeginForm("AgregarFotos", "Registro", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+    @if (ViewBag.Alert == "CARGADA FALLIDA")
     {
-        <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="IdUsuario" id="buscar">
-            @foreach (var item in ViewBag.Usuario)
-            {
-                <option value="@item.idUsuario">@item.idUsuario - @item.nombre @item.apellido</option>
-            }
-        </select>
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.Alert
+        </div>
+    }
+    @if (ViewBag.Alert == "CARGA EXITOSA")
+    {
+        <div class="alert alert-success" role="alert">
+            @ViewBag.Alert
+        </div>
+    }
+    @if (ViewBag.Alert == null)
+    {
+
+    }
+    else
+    {
+        @ViewBag.Alert
+    }
+
+    @using(Html.BeginForm("AgregarFotos", "Registro", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="IdUsuario" id="buscar">
+        @foreach (var item in ViewBag.Usuario)
+        {
+            <option value="@item.idUsuario">@item.idUsuario - @item.nombre @item.apellido</option>
+        }
+    </select>
 
     <input id="input-b1" name="imgFile" type="file" class="file" data-browse-on-zone-click="true">
     <button type="submit" class="btn btn-primary">Guardar</button>

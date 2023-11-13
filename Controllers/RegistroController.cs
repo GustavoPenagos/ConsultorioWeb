@@ -9,12 +9,14 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.DynamicData;
 using System.Web.Mvc;
 using System.Web.Razor.Generator;
+using System.Web.UI.WebControls;
 
 namespace ConsultorioWeb.Controllers
 {
@@ -63,14 +65,31 @@ namespace ConsultorioWeb.Controllers
             return View();
         }
 
-        public async Task<dynamic> CargarImagen()
+        public async Task<dynamic> CargarImagen(string estado = null)
         {
             var usuarios = await new HomeController().Index(null, true);
-            if(usuarios == null)
+            if (usuarios == null)
             {
                 return RedirectToAction("Index", "Home");
             }
             ViewBag.Usuario = JsonConvert.DeserializeObject(usuarios);
+            if (estado != null)
+            {
+                switch (estado)
+                {
+                    case "1":
+                        ViewBag.Alert = "GUARDADO";
+                    break;
+                    case "2":
+                        ViewBag.Alert = "NO GUARDADO";
+                        
+                            break;
+                    case null: break;
+                    default:
+                        ViewBag.Alert = estado;
+                    break;
+                }
+            }
             return View();
         }
 
@@ -81,6 +100,34 @@ namespace ConsultorioWeb.Controllers
             ViewBag.Carta = Convert.ToInt32(await new HomeController().BuscarUsuario(Convert.ToInt32(TempData["id"]), "registro"));
             ViewBag.Convecciones = conv;
             ViewBag.idUsuario = TempData["id"];
+            return View();
+        }
+
+        public async Task<dynamic> RegistroContabilidad(int estado=0)
+        {
+            try
+            {
+                var usuarios = await new HomeController().Index(null, true);
+                if (usuarios == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                ViewBag.Usuario = JsonConvert.DeserializeObject(usuarios);
+                switch (estado)
+                {
+                    case 1:
+                        ViewBag.Alert = "GUARDADO";
+                        break;
+                    case 2:
+                        ViewBag.Alert = "NO GUARDADO";
+                        break;
+                    default: break;
+                }
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -280,15 +327,16 @@ namespace ConsultorioWeb.Controllers
                 HttpResponseMessage responseMessage = await client.PostAsync(jsonImg, json);
                 if (responseMessage.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("CargarImagen", "Registro", new {estado = "1"});
                 }
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("CargarImagen", "Registro", new { estado = "2" });
             }
             catch (Exception ex)
             {
-                return View();
+                return RedirectToAction("CargarImagen", "Registro", new { estado = ex.Message });
             }
         }
+
 
         #endregion
 
@@ -322,6 +370,54 @@ namespace ConsultorioWeb.Controllers
             catch (Exception ex)
             {
                 return RedirectToAction("RegistrarCita", "Registro");
+            }
+        }
+
+        #endregion
+
+        #region Registers Accounting
+
+        public async Task<dynamic> InsertarContabilidad(Contabilidad contabilidad)
+        {
+            try 
+            {
+                #region calculos
+                contabilidad.Saldo = contabilidad.Valor - contabilidad.Abono;
+                #endregion
+
+                HttpClient client = new HttpClient();
+                string apiCont = api + "/contabilidad/agregar";
+                json = new StringContent(JsonConvert.SerializeObject(contabilidad), Encoding.UTF8, "application/json");
+                HttpResponseMessage httpResponse = await client.PostAsync(apiCont, json);
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("RegistroContabilidad", "Registro", new { estado = 1 });
+                }
+
+                return RedirectToAction("RegistroContabilidad", "Registro", new { estado = 2 });
+            }
+            catch(Exception ex)
+            {
+                return View("Index", "Home");
+            }
+        }
+
+        public async Task<dynamic> InsertarPago(long id, double Abono)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                string apiPago = api + "/contabilidad/pagos?id=" + id + "&pago=" + Abono;
+                HttpResponseMessage message = await client.GetAsync(apiPago);
+                if (message.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Historial", "Lista");
+                }
+                return RedirectToAction("Historial", "Lista");
+            }
+            catch(Exception ex)
+            {
+                return View("Index", "Home");
             }
         }
 
