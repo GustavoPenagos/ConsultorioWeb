@@ -11,6 +11,6 @@ namespace ConsultorioWeb.Models
         public string Diagnostico { get; set; }
         public string Pronostico { get; set; }
         public string Tratamiento { get; set; }
-        public DateTime Atencion { get; set; } = DateTime.Now;
+        public DateTime Atencion { get; set; }
     }
 }

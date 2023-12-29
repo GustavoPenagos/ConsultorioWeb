@@ -30,6 +30,6 @@ namespace OdontologiaWeb.Models
         public int FreCepillado { get; set; }
         public int CedaDental { get; set; }
         public string Observaciones { get; set; }
-        public DateTime Atencion { get; set; } = DateTime.Now;
+        public DateTime Atencion { get; set; }
     }
 }
