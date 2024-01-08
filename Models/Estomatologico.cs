@@ -16,6 +16,6 @@ namespace OdontologiaWeb.Models
         public int Frenillos { get; set; }
         public int Maxilares { get; set; }
         public int GlanSalivales { get; set; }
-        public DateTime Atencion { get; set; } = DateTime.Now;
+        public DateTime Atencion { get; set; } 
     }
 }

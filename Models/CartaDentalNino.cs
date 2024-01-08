@@ -28,6 +28,6 @@ namespace ConsultorioWeb.Models
         public string c83 { get; set; }
         public string c84 { get; set; }
         public string c85 { get; set; }
-        public DateTime Atencion { get; set; } = DateTime.Now;
+        public DateTime Atencion { get; set; }
     }
 }

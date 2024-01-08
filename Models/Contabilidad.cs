@@ -12,6 +12,6 @@ namespace ConsultorioWeb.Models
         public double Valor { get; set; }
         public double Abono { get; set; }
         public double Saldo { get; set; }
-        public DateTime FechaRegistro { get; set; } = DateTime.Now;
+        public DateTime FechaRegistro { get; set; }
     }
 }
