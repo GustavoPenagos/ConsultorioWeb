@@ -71,17 +71,21 @@
             @Html.Partial("~/Views/Partial/_DatosDental.cshtml", (object)ViewBag.Dental)
         </div>
         <br />
-        <center>
-            <p>
-                <a class="btn btn-primary" data-bs-toggle="collapse" href="#SaldoAbonos" role="button" aria-expanded="false" aria-controls="collapseExample" style="width: 50%;">
-                    Contabilidad
-                </a>
-            </p>
-        </center>
-        <div class="collapse multi-collapse" id="SaldoAbonos">
-            @Html.Partial("~/Views/Partial/_SaldoAbonos.cshtml", (object)ViewBag.Contabilidad)
-        </div>
-
+        @if (ViewBag.Contabilidad != null)
+        {
+            <center>
+                <p>
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#SaldoAbonos" role="button" aria-expanded="false" aria-controls="collapseExample" style="width: 50%;">
+                        Contabilidad
+                    </a>
+                </p>
+            </center>
+            <div class="collapse multi-collapse" id="SaldoAbonos">
+            
+                    @Html.Partial("~/Views/Partial/_SaldoAbonos.cshtml", (object)ViewBag.Contabilidad)
+            
+            </div>
+        }
     </div>
 </main>
 
