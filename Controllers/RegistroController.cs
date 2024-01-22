@@ -131,6 +131,27 @@ namespace ConsultorioWeb.Controllers
             return View();
         }
 
+        public async Task<dynamic> Urgencia()
+        {
+            try
+            {
+                var estadoCivil = await EstadoCivil();
+                var documentos = await TiposDocumentos();
+                var ciudades = await Ciudades();
+                var generos = await Generos();
+
+                ViewBag.EstadoCivil = estadoCivil;
+                ViewBag.Documentos = documentos;
+                ViewBag.Ciudades = ciudades;
+                ViewBag.Genero = generos;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return View();
+        }
+
         #endregion
 
         #region Views - Registers 
@@ -540,6 +561,30 @@ namespace ConsultorioWeb.Controllers
             return "";
         }
 
+        #endregion
+
+        #region Urgencia
+        public async Task<dynamic> Registrar_Urgancia(Urgencia urgencia)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                string apiUrgencia = api + "/registro/urgencia";
+                json = new StringContent(JsonConvert.SerializeObject(urgencia), Encoding.UTF8, "application/json");
+                HttpResponseMessage httpResponse = await client.PostAsync(apiUrgencia, json);
+                if(httpResponse.IsSuccessStatusCode)
+                {
+                    return View("Index", "Home");
+                }
+
+                return View("Urgencia", "Resgistro");
+            }
+            catch(Exception ex)
+            {
+                return View();
+            }
+        }
         #endregion
 
     }

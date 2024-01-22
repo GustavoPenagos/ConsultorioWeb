@@ -1,0 +1,189 @@
+﻿@model ConsultorioWeb.Models.Urgencia 
+@{
+    ViewBag.Title = "Urgencia";
+}
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#buscar').select2();
+        });
+    </script>
+}
+<h2>HISTORIA CLINICA DE URGENCIA ODONTOLOGICA</h2>
+<br/>
+<main>
+    @using (Html.BeginForm("Registrar_Urgancia", "Registro", FormMethod.Post))
+    {
+        <div class="row">
+            <article style="background-color: #EEEEEE;">
+                <header>
+                    <h3>
+                        1. Datos personales del usuario
+                    </h3>
+                </header>
+                <table class="table table-striped ">
+                    <thead>
+                        <tr>
+                            <td>Fecha de urgencia <input type="text" name="Fecha_URG" placeholder="@DateTime.Now.ToString()" /></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Nombres</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Nombre" required>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Apellidos</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Apellido" required>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Tipo identificacion</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="IdDocumento">
+                                    @foreach (var item in ViewBag.Documentos)
+                                    {
+                                        <option value="@item.IdDocumento">@item.Documento</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">N° Documento</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="IdUsuario" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Fecha de nacimiento</span>
+                                </div>
+                                <input type="date" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="FechaNacido" required>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Edad</span>
+                                </div>
+                                <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Edad" required>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Ciudad de nacimiento</span>
+                                </div>
+                                <select class="form-select form-select-sm" style="width:100%;" aria-label="Ejemplo de .form-select-sm" name="IdCiudad" id="buscar">
+                                    @foreach (var item in ViewBag.Ciudades)
+                                    {
+                                        <option value="@item.IdCiudad">@item.Municipio</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Sexo</span>
+                                </div>
+                                <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="IdGenero">
+                                    @foreach (var item in ViewBag.Genero)
+                                    {
+                                        <option value="@item.IdGenero">@item.Sexo</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Direccion</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Direccion">
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Telefono</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Telefono">
+                            </td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Responsable</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="NombreAcudiente">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <article style="background-color: #EEEEEE;">
+                <header>
+                    <h3>
+                        2. AMNANESIS
+                    </h3>
+                </header>
+                <div class="input-group">
+                    <span class="input-group-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Motivo de la consulta</span>
+                    <textarea class="form-control" aria-label="With textarea" name="Motivo"></textarea>
+                </div><br />
+                <div class="input-group">
+                    <span class="input-group-text">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;Diagnostico
+                    </span>
+                    <textarea class="form-control" aria-label="With textarea" name="Diagnostico"></textarea>
+                </div><br />
+                <div class="input-group">
+                    <span class="input-group-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enfermedad actual</span>
+                    <textarea class="form-control" aria-label="With textarea" name="Enf_Actual"></textarea>
+                </div><br />
+                <div class="input-group">
+                    <span class="input-group-text">&nbsp;Antecedentes generales</span>
+                    <textarea class="form-control" aria-label="With textarea" name="Ant_General"></textarea>
+                </div><br />
+                <div class="input-group">
+                    <span class="input-group-text">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Medicamentos que <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;recibe actualmente
+                    </span>
+                    <textarea class="form-control" aria-label="With textarea" name="Medicamento"></textarea>
+                </div><br />
+                <div class="input-group">
+                    <span class="input-group-text">&nbsp;&nbsp;&nbsp;&nbsp;Tratamiento ejecutado</span>
+                    <textarea class="form-control" aria-label="With textarea" name="Trata_ejectado"></textarea>
+                </div><br />
+                <div class="input-group">
+                    <span class="input-group-text">Remision del especialista</span>
+                    <textarea class="form-control" aria-label="With textarea" name="Rem_Especialista"></textarea>
+                </div>
+                <br />
+                <div class="input-group">
+                    <span class="input-group-text">Consentimiento informado</span>
+                    <u>
+                        <br />
+                        La información dada para la historia clínica son severas y la
+                        información completa de mi estado de salud, para que no pueda agravar la realización de mi urgencia odontológica
+                    </u>
+                </div>
+                <br />
+                @Html.RadioButtonFor(m => m.Autorizacion, "SI")
+                @Html.RadioButtonFor(m => m.Autorizacion, "NO")
+
+            </article>
+        </div>
+
+        <table class="table table-striped">
+            <tfoot>
+                <tr>
+                    <td colspan="2">
+                        <center><button type="submit" class="btn btn-primary" style="width:50%; ">Siguiente</button></center>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>    
+    }
+</main>

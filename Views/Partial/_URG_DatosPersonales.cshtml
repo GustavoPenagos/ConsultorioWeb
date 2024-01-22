@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "Datos personales del usuario";
+}
+<h2>Datos personales del usuario</h2>
+<main>
+    @using (Html.BeginForm("Urgencia", "Registro", FormMethod.Post))
+    {
+        <div class="row">
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <td>Fecha de urgencia <input type="text" class="" placeholder="@DateTime.Now.ToString()" /></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Nombres</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Nombre" required>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Apellidos</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Apellido" required>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Tipo identificacion</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="IdDocumento">
+                                @foreach (var item in ViewBag.Documentos)
+                                {
+                                    <option value="@item.IdDocumento">@item.Documento</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">N° Documento</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="IdUsuario" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Fecha de nacimiento</span>
+                            </div>
+                            <input type="date" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="FechaNacido" required>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Edad</span>
+                            </div>
+                            <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Edad" required>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Ciudad de nacimiento</span>
+                            </div>
+                            <select class="form-select form-select-sm" style="width:100%;" aria-label="Ejemplo de .form-select-sm" name="IdCiudad" id="buscar">
+                                @foreach (var item in ViewBag.Ciudades)
+                                {
+                                    <option value="@item.IdCiudad">@item.Municipio</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Sexo</span>
+                            </div>
+                            <select class="form-select form-select-sm" aria-label="Ejemplo de .form-select-sm" name="IdGenero">
+                                @foreach (var item in ViewBag.Genero)
+                                {
+                                    <option value="@item.IdGenero">@item.Sexo</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Direccion</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Direccion">
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Telefono</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="Telefono">
+                        </td>
+                        <td>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Responsable</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="NombreAcudiente">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+</main>
+

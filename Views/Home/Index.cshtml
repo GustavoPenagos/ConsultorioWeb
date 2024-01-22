@@ -3,6 +3,10 @@
 }
 
 <main>
+    <div style="padding-left:90%;">
+        <a href="@Url.Action("Urgencia","Registro")"><img src="~/Content/Images/emergency.png" style="width: 50%; height:50%;" /> </a>
+    </div>
+    <hr />
     <div class="row">
         <table class="table table-striped table-hover">
             <thead>
@@ -17,44 +21,44 @@
                 </tr>
             </thead>
             <tbody>
-                    @foreach (var item in ViewBag.Usuario)
-                    {
-                        <tr>
-                            <td>@item.tipodocumento</td>
-                            <td>@item.idUsuario</td>
-                            <td>
-                                <a href="@Url.Action("Historial","Lista", new {id = item.idUsuario})" class="text-decoration-none">
-                                    <p class="text-black">
-                                        @item.nombre @item.apellido
-                                    </p>
-                                </a>
-                            </td>
-                            <td>@item.edad </td>
-                            <td>@item.genero</td>
-                            <td>@item.citas</td>
-                            <td>@item.hora</td>
-                            <td>
-                                <a href="@Url.Action("RegistroUsuario","Registro", new {id = item.idUsuario})">
-                                    <img src="~/Content/Images/Edit.svg" title="Editar"/>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="@Url.Action("EliminarUsuario","Crud", new {id = item.idUsuario})">
-                                    <img src="~/Content/Images/Delete.svg" title="Eliminar"/>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="@Url.Action("RegistrarCita","Registro", new {id = item.idUsuario, nombre = item.nombre, })">
-                                    <img src="~/Content/Images/addDate.svg" title="Agregar cita"/>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="@Url.Action("PlanTratamiento","Tratamiento", new {id = item.idUsuario})">
-                                    <img src="~/Content/Images/tratamiento.svg" title="Agregar Tratamiento"/>
-                                </a>
-                            </td>
-                        </tr>
-                    }
+                @foreach (var item in ViewBag.Usuario)
+                {
+                    <tr>
+                        <td>@item.tipodocumento</td>
+                        <td>@item.idUsuario</td>
+                        <td>
+                            <a href="@Url.Action("Historial","Lista", new {id = item.idUsuario})" class="text-decoration-none">
+                                <p class="text-black">
+                                    @item.nombre @item.apellido
+                                </p>
+                            </a>
+                        </td>
+                        <td>@item.edad </td>
+                        <td>@item.genero</td>
+                        <td>@item.citas</td>
+                        <td>@item.hora</td>
+                        <td>
+                            <a href="@Url.Action("RegistroUsuario","Registro", new {id = item.idUsuario})">
+                                <img src="~/Content/Images/Edit.svg" title="Editar" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("EliminarUsuario","Crud", new {id = item.idUsuario})">
+                                <img src="~/Content/Images/Delete.svg" title="Eliminar" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("RegistrarCita","Registro", new {id = item.idUsuario, nombre = item.nombre, })">
+                                <img src="~/Content/Images/addDate.svg" title="Agregar cita" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("PlanTratamiento","Tratamiento", new {id = item.idUsuario})">
+                                <img src="~/Content/Images/tratamiento.svg" title="Agregar Tratamiento" />
+                            </a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
